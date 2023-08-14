@@ -1,8 +1,8 @@
-# true-tone-recovery
-Чтение и запись памяти дисплея от iPhone. Основан на стандартной библиотеке Wire.h
+# True Tone Recovery
+iPhone'un belleğini okuma ve yazma. Wire.h standart kütüphanesine dayanmaktadır.
 
-# Назначение файлов
+## Dosya Amaçları
 
-* Sources - Исходники для Arduino и C#
-* Support - Вспомогательные файлы
-* Apple True Tone Recovery - Готовая программа на .NET
+- **Sources**: Arduino ve C# için kaynak kodları
+- **Support**: Yardımcı dosyalar
+- **Apple True Tone Recovery**: .NET için hazır bir program
