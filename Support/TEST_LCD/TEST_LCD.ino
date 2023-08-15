@@ -33,7 +33,7 @@ void Read_byte(uint8_t addr_eeprom, uint16_t addr) {
   Wire.write((int)(addr >> 8));
   Wire.write((int)(addr & 0xFF));
   Wire.endTransmission();
-  Wire.requestFrom(addr_eeprom, 1);
+  Wire.requestFrom((int)(addr_eeprom), (int)(1));
   delay(5);
   if(Wire.available()){
     result = Wire.read();
@@ -51,8 +51,7 @@ void Write_byte(uint8_t addr_eeprom, uint16_t addr, uint8_t data) {
 
 void Read(uint16_t start_b, uint16_t end_b) {
   for(uint16_t i = start_b ; i <= end_b; i++){
-    uint8_t sb=DEV_ADDR;
-    Read_byte(sb, i);
+    Read_byte(DEV_ADDR, i);
   }
   Serial.print("\n");
 }
