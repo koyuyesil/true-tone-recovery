@@ -11,9 +11,11 @@
 #define SERIAL_BAUDRATE 115200 //скорость связи по Serial
 
 void Scanner() {
+  Serial.println("scanning address");
   byte err, addr;
   for (addr = 8; addr < 127; addr++ ) {
     Wire.beginTransmission(addr);
+    Serial.println(addr);
     err = Wire.endTransmission();
     if (err == 0) {
       Serial.print("found address 0x");
@@ -49,7 +51,8 @@ void Write_byte(uint8_t addr_eeprom, uint16_t addr, uint8_t data) {
 
 void Read(uint16_t start_b, uint16_t end_b) {
   for(uint16_t i = start_b ; i <= end_b; i++){
-    Read_byte(DEV_ADDR, i);
+    uint8_t sb=DEV_ADDR;
+    Read_byte(sb, i);
   }
   Serial.print("\n");
 }
