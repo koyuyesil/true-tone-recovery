@@ -60,7 +60,7 @@
             this.cbPort.Location = new System.Drawing.Point(175, 151);
             this.cbPort.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
             this.cbPort.Name = "cbPort";
-            this.cbPort.PromptText = "Порт";
+            this.cbPort.PromptText = "Port";
             this.cbPort.Size = new System.Drawing.Size(95, 29);
             this.cbPort.Style = MetroFramework.MetroColorStyle.Purple;
             this.cbPort.TabIndex = 1;
@@ -76,7 +76,7 @@
             this.btnWrite.Size = new System.Drawing.Size(115, 29);
             this.btnWrite.Style = MetroFramework.MetroColorStyle.Purple;
             this.btnWrite.TabIndex = 2;
-            this.btnWrite.Text = "Записать";
+            this.btnWrite.Text = "Write";
             this.btnWrite.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnWrite.UseSelectable = true;
             this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
@@ -117,7 +117,7 @@
             this.tbCoverBoardSN.MaxLength = 0;
             this.tbCoverBoardSN.Name = "tbCoverBoardSN";
             this.tbCoverBoardSN.PasswordChar = '\0';
-            this.tbCoverBoardSN.PromptText = "Cover Board SN";
+            this.tbCoverBoardSN.WaterMark = "Cover Board SN";
             this.tbCoverBoardSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbCoverBoardSN.SelectedText = "";
             this.tbCoverBoardSN.SelectionLength = 0;

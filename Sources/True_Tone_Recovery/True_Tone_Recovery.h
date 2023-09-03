@@ -2,30 +2,30 @@
 #define APPLE_TRUE_TONE_RECOVERY_H
 
 /**
- * Коды команд управления 
+ * Control Command Codes
  * 
- * Код - Символ - Описание
- * 65  - "A"    - Для iPhone 8/8P
- * 66  - "B"    - Для iPhone Xr
- * 67  - "C"    - Для iPhone X/Xs/XsMax
+ * Code - Symbol - Description
+ * 65   - "A"    - For iPhone 8/8P
+ * 66   - "B"    - For iPhone Xr
+ * 67   - "C"    - For iPhone X/Xs/XsMax
 **/
 #define COMMAND_IP_8_8P 65
 #define COMMAND_IP_XR 66
 #define COMMAND_IP_X_XS_XSMAX 67
 
-//Адрес устройства на линии I2C
+// Device address on the I2C bus
 #define DEVICE_ADDRESS 0x51
 
-//Скорость обмена данными по I2C
-#define IIC_CLOCK    100000
+// I2C bus data exchange speed
+#define IIC_CLOCK 100000
 
-//Скорость обмена данными по Serial
-#define SERIAL_BAUDRATE    115200
+// Serial communication baud rate
+#define SERIAL_BAUDRATE 115200
 
-//Длинна пакета принимаемых данных (Байт)
+// Length of received data packet (bytes)
 #define DATA_LENGTH 45 //(44+1)
 
-//Начальные адреса ячеек (dec)
+// Initial memory cell addresses (dec)
 #define MTSN_8_8P_FIRST_BYTE 14903
 #define MTSN_XR_FIRST_BYTE_1 15933
 #define MTSN_XR_FIRST_BYTE_2 16128
@@ -33,10 +33,10 @@
 #define MTSN_X_XS_XSMAX_FIRST_BYTE_2 9068
 #define MTSN_X_XS_XSMAX_FIRST_BYTE_3 15660
 
-//Массив принятых байт из UART
+// Array for received bytes from UART
 byte serial_input[DATA_LENGTH] = "";
 
-//Массивы с адресами ячеек памяти
+// Arrays with memory cell addresses
 uint16_t mtsn_8_8p[DATA_LENGTH - 1];
 uint16_t mtsn_xr[DATA_LENGTH - 1];
 uint16_t mtsn_xr_2[DATA_LENGTH - 1];

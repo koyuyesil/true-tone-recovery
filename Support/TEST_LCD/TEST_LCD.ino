@@ -1,21 +1,21 @@
 /**
- * mode: 1 - скан 2 - чтение 3 - запись
+ * mode: 1 - Scan 2 - Read 3 - Write
  */
 
 #include <Wire.h>
-#define DEV_ADDR 0x51 //адрес микросхемы на шине I2C
-#define EMPTY_BYTE 0xFF //байт-пустышка (может быть любым)
-#define START_BYTE 14900 //начальный адрес памяти 8/8p-14903 xr-15933:16128 x/xs/xsmax-4620:9068:15660
-#define END_BYTE 14950 //конечный адрес памяти 8/8p-14946 xr-15976:16171 x/xs/xsmax-4663:9111:15703
-#define IIC_CLOCK 100000 //частота шины I2C
-#define SERIAL_BAUDRATE 115200 //скорость связи по Serial
+#define DEV_ADDR 0x51 // Device address on the I2C bus
+#define EMPTY_BYTE 0xFF // Empty byte (can be any value)
+#define START_BYTE 4620 // Start address of memory 8/8p-14903 xr-15933:16128 x/xs/xsmax-4620:9068:15660
+#define END_BYTE 4663 // End address of memory 8/8p-14946 xr-15976:16171 x/xs/xsmax-4663:9111:15703
+#define IIC_CLOCK 100000 // I2C bus frequency
+#define SERIAL_BAUDRATE 115200 // Serial communication baud rate
 
 void Scanner() {
   Serial.println("scanning address");
   byte err, addr;
   for (addr = 8; addr < 127; addr++ ) {
     Wire.beginTransmission(addr);
-    Serial.println(addr);
+    //Serial.println(addr);
     err = Wire.endTransmission();
     if (err == 0) {
       Serial.print("found address 0x");
@@ -25,6 +25,7 @@ void Scanner() {
         Serial.print("\n");
       }
     }
+  Serial.println("scanning end");
 }
 
 void Read_byte(uint8_t addr_eeprom, uint16_t addr) {

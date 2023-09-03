@@ -129,7 +129,7 @@ namespace Apple_True_Tone_Recovery
         //Изменение полея серийника COVER BOARD
         private void tbCoverBoardSN_TextChanged(object sender, EventArgs e)
         {
-            //Вывести число символов в поле COVER BOARD
+            //Вывести число символов в поле COVER BOARD 44/44 
             lblNumCBSN.Text = string.Format(Resources.FORMAT_LABLE + Resources.LIMIT_COVER_BOARD, tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture));
             ButtonCheck();
         }
@@ -150,12 +150,12 @@ namespace Apple_True_Tone_Recovery
             catch
             {
                 spLCD.Close();
-                //Сообщение об ошибке связи
-                MetroMessageBox.Show(this,
-                    Messages.ERROR_RELATION,
-                    Messages.ERROR,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                ////Сообщение об ошибке связи
+                //MetroMessageBox.Show(this,
+                //    Messages.ERROR_RELATION,
+                //    Messages.ERROR,
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Error);
             }
         }
     }
