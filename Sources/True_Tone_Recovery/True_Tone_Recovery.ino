@@ -21,10 +21,13 @@ void setup() {
 }
 
 void loop() {
+  // 44 bayt seri port data varmı bak varsa readbuffer
   if(Serial.available() == DATA_LENGTH){
     readBuffer();
+    // serial gelen data son harfine baklılır case secilir
     switch(serial_input[DATA_LENGTH - 1]){
       case COMMAND_IP_8_8P:
+      //oluşturulan arraylar yazılır. seriporttan gelen değil
       writeArray(mtsn_8_8p);
       break;
       case COMMAND_IP_XR:
