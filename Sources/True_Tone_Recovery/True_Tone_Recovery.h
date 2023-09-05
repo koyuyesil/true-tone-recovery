@@ -17,7 +17,7 @@
 #define DEVICE_ADDRESS 0x51
 
 // I2C bus data exchange speed
-#define IIC_CLOCK 100000
+#define IIC_CLOCK 400000
 
 // Serial communication baud rate
 #define SERIAL_BAUDRATE 115200

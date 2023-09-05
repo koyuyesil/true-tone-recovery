@@ -66,6 +66,7 @@ void Write(uint16_t start_b, uint16_t end_b) {
 }
 
 void setup() {
+
   Serial.begin(SERIAL_BAUDRATE);
   Wire.begin();
   Wire.setClock(IIC_CLOCK);
