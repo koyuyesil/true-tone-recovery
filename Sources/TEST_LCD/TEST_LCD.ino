@@ -7,7 +7,7 @@
 #define EMPTY_BYTE 0xFF         // Empty byte (can be any value)
 #define START_BYTE 0            // Start address of memory 8/8p-14903 xr-15933:16128 x/xs/xsmax-4620:9068:15660
 #define END_BYTE 4000           // End address of memory 8/8p-14946 xr-15976:16171 x/xs/xsmax-4663:9111:15703
-#define IIC_CLOCK 100000        // I2C bus frequency
+#define IIC_CLOCK 400000        // I2C bus frequency
 #define SERIAL_BAUDRATE 115200  // Serial communication baud rate
 #define COMPARE_COMMAND_DEC \
   { 65, 66, 67, 68 }

@@ -175,11 +175,10 @@ namespace Apple_True_Tone_Recovery
 
             try
             {
-                metroTextBox1.Text += receivedData;
                 hexBox1.ByteProvider.InsertBytes(i, Encoding.ASCII.GetBytes(receivedData));
                 hexBox1.Invalidate();
                 i++;
-                //metroTextBox1.Text=i.ToString();
+                metroTextBox1.Text=i.ToString();
                 metroProgressBar1.Value = i;
             }
             catch(Exception ex)
@@ -192,5 +191,14 @@ namespace Apple_True_Tone_Recovery
             }
         }
 
+        private void mbtnClose_Click(object sender, EventArgs e)
+        {
+            serialPortLCM.Close();
+        }
+
+        private void metroTabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
