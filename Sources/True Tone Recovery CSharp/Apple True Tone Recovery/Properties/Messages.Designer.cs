@@ -61,7 +61,16 @@ namespace Apple_True_Tone_Recovery.Properties {
         }
         
         /// <summary>
-        ///   Ошибка benzeri yerelleştirilmiş bir dize arar.
+        ///   REASON XX benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string DATA_TYPE {
+            get {
+                return ResourceManager.GetString("DATA_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Hata benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string ERROR {
             get {
@@ -70,11 +79,20 @@ namespace Apple_True_Tone_Recovery.Properties {
         }
         
         /// <summary>
-        ///   Не удалось установить соединение. Проверьте подключение и повторите попытку benzeri yerelleştirilmiş bir dize arar.
+        ///   OKUMA HATASI benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string ERROR_RELATION {
             get {
                 return ResourceManager.GetString("ERROR_RELATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   KOMUT HATASI benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ERROR_WRONG_COMMAND {
+            get {
+                return ResourceManager.GetString("ERROR_WRONG_COMMAND", resourceCulture);
             }
         }
     }

@@ -3,17 +3,19 @@
  */
 
 #include <Wire.h>
-#define DEV_ADDR 0x51 // Device address on the I2C bus
-#define EMPTY_BYTE 0xFF // Empty byte (can be any value)
-#define START_BYTE 4620 // Start address of memory 8/8p-14903 xr-15933:16128 x/xs/xsmax-4620:9068:15660
-#define END_BYTE 4663 // End address of memory 8/8p-14946 xr-15976:16171 x/xs/xsmax-4663:9111:15703
-#define IIC_CLOCK 100000 // I2C bus frequency
-#define SERIAL_BAUDRATE 115200 // Serial communication baud rate
+#define DEV_ADDR 0x51           // Device address on the I2C bus
+#define EMPTY_BYTE 0xFF         // Empty byte (can be any value)
+#define START_BYTE 0            // Start address of memory 8/8p-14903 xr-15933:16128 x/xs/xsmax-4620:9068:15660
+#define END_BYTE 4000           // End address of memory 8/8p-14946 xr-15976:16171 x/xs/xsmax-4663:9111:15703
+#define IIC_CLOCK 100000        // I2C bus frequency
+#define SERIAL_BAUDRATE 115200  // Serial communication baud rate
+#define COMPARE_COMMAND_DEC \
+  { 65, 66, 67, 68 }
 
 void Scanner() {
   Serial.println("scanning address");
   byte err, addr;
-  for (addr = 8; addr < 127; addr++ ) {
+  for (addr = 8; addr < 127; addr++) {
     Wire.beginTransmission(addr);
     //Serial.println(addr);
     err = Wire.endTransmission();
@@ -21,10 +23,10 @@ void Scanner() {
       Serial.print("found address 0x");
       if (addr < 16)
         Serial.print("0");
-        Serial.print(addr, HEX);
-        Serial.print("\n");
-      }
+      Serial.print(addr, HEX);
+      Serial.print("\n");
     }
+  }
   Serial.println("scanning end");
 }
 
@@ -36,7 +38,7 @@ void Read_byte(uint8_t addr_eeprom, uint16_t addr) {
   Wire.endTransmission();
   Wire.requestFrom((int)(addr_eeprom), (int)(1));
   delay(5);
-  if(Wire.available()){
+  if (Wire.available()) {
     result = Wire.read();
     Serial.print(result);
   }
@@ -51,14 +53,14 @@ void Write_byte(uint8_t addr_eeprom, uint16_t addr, uint8_t data) {
 }
 
 void Read(uint16_t start_b, uint16_t end_b) {
-  for(uint16_t i = start_b ; i <= end_b; i++){
+  for (uint16_t i = start_b; i <= end_b; i++) {
     Read_byte(DEV_ADDR, i);
   }
   Serial.print("\n");
 }
 
 void Write(uint16_t start_b, uint16_t end_b) {
-  for(uint16_t i = start_b ; i <= end_b; i++){
+  for (uint16_t i = start_b; i <= end_b; i++) {
     Write_byte(DEV_ADDR, i, EMPTY_BYTE);
     delay(5);
   }
@@ -73,21 +75,19 @@ void setup() {
 }
 
 void loop() {
-  if(Serial.available() > 0) {
-    uint8_t mode = Serial.read() - '0';
-    switch(mode) {
-    case 1:
-      Scanner();
-      break;
-    case 2:
-      Read(START_BYTE, END_BYTE);
-      break;
-    case 3:
-      Write(START_BYTE, END_BYTE);
-      break;
-    default:
-      Serial.println("error command");
-      Serial.println("1-scan 2-read 3-write");
+  // Uart (seri iletişim) tamponunda veri olup olmadığını kontrol et
+  if (Serial.available() != 0) {
+    int _serial_input = Serial.read();
+    if (_serial_input == 65) {
+      Read(START_BYTE,END_BYTE);
+    }
+    else if (_serial_input == 66) {
+      Read(START_BYTE,END_BYTE);
+    }
+    else if (_serial_input == 67) {
+      Read(START_BYTE,END_BYTE);
     }
   }
+
+  Serial.flush();
 }
