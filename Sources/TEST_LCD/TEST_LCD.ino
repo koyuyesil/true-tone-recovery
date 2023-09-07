@@ -9,8 +9,7 @@
 #define END_BYTE 4000           // End address of memory 8/8p-14946 xr-15976:16171 x/xs/xsmax-4663:9111:15703
 #define IIC_CLOCK 400000        // I2C bus frequency
 #define SERIAL_BAUDRATE 115200  // Serial communication baud rate
-#define COMPARE_COMMAND_DEC \
-  { 65, 66, 67, 68 }
+
 
 void Scanner() {
   Serial.println("scanning address");
@@ -37,7 +36,7 @@ void Read_byte(uint8_t addr_eeprom, uint16_t addr) {
   Wire.write((int)(addr & 0xFF));
   Wire.endTransmission();
   Wire.requestFrom((int)(addr_eeprom), (int)(1));
-  delay(5);
+  delay(1);
   if (Wire.available()) {
     result = Wire.read();
     Serial.print(result);
@@ -56,7 +55,7 @@ void Read(uint16_t start_b, uint16_t end_b) {
   for (uint16_t i = start_b; i <= end_b; i++) {
     Read_byte(DEV_ADDR, i);
   }
-  Serial.print("\n");
+  Serial.println("DUMP_FINISHED");
 }
 
 void Write(uint16_t start_b, uint16_t end_b) {
@@ -64,7 +63,7 @@ void Write(uint16_t start_b, uint16_t end_b) {
     Write_byte(DEV_ADDR, i, EMPTY_BYTE);
     delay(5);
   }
-  Serial.println("cleaning finished");
+  Serial.print("DUMP_FINISHED");
 }
 
 void setup() {
@@ -75,19 +74,16 @@ void setup() {
 }
 
 void loop() {
-  // Uart (seri iletişim) tamponunda veri olup olmadığını kontrol et
-  if (Serial.available() != 0) {
-    int _serial_input = Serial.read();
-    if (_serial_input == 65) {
-      Read(START_BYTE,END_BYTE);
-    }
-    else if (_serial_input == 66) {
-      Read(START_BYTE,END_BYTE);
-    }
-    else if (_serial_input == 67) {
-      Read(START_BYTE,END_BYTE);
-    }
+  if (Serial.available() > 0) {
+    String command = Serial.readStringUntil('!!');  // Seri iletilen komutu okuyun
+    // Komutları işleyin
+    if (command == "DUMP") {
+      delay(100);
+      Read(START_BYTE, END_BYTE);
+    } else if (command == "WRITE") {
+      delay(100);
+      Read(START_BYTE, END_BYTE);
+    } 
   }
-
   Serial.flush();
 }

@@ -31,7 +31,7 @@ namespace Apple_True_Tone_Recovery
             PortPreparation();
             ElemetsDefaultValue();
             hexBox1.Dock = DockStyle.Fill; // Formun içini dolduracak şekilde boyutlandırın
-            hexBox1.ByteProvider= new DynamicByteProvider(Encoding.ASCII.GetBytes(""));
+            hexBox1.ByteProvider = new DynamicByteProvider(Encoding.ASCII.GetBytes(""));
             hexBox1.Show();
         }
 
@@ -130,12 +130,11 @@ namespace Apple_True_Tone_Recovery
             }
             catch
             {
-                serialPortLCM.Close();
                 MetroMessageBox.Show(this,
-                    Messages.ERROR_RELATION,
-                    Messages.ERROR,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                     Messages.ERROR_RELATION,
+                     Messages.ERROR,
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
             }
         }
 
@@ -146,15 +145,14 @@ namespace Apple_True_Tone_Recovery
                 i = 0;
                 serialPortLCM.PortName = Convert.ToString(cbPort.Text);
                 serialPortLCM.Open();
-                var send = "A";
-                serialPortLCM.WriteLine(send);
+                serialPortLCM.Write("DUMP!!");
 
             }
             catch (Exception ex)
-            { 
+            {
                 serialPortLCM.Close();
                 MetroMessageBox.Show(this,
-                    Messages.ERROR_WRONG_COMMAND+" :"+ex.Message,
+                    Messages.ERROR_WRONG_COMMAND + " :" + ex.Message,
                     Messages.ERROR,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -167,9 +165,9 @@ namespace Apple_True_Tone_Recovery
         private void serialPortLCM_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             BeginInvoke(new ReceivedEvent(DataProcessing), serialPortLCM.ReadExisting());
-            //serialPortLCM.Close();
+
         }
-        int i=0;
+        int i = 0;
         private void DataProcessing(string receivedData)
         {
 
@@ -177,11 +175,10 @@ namespace Apple_True_Tone_Recovery
             {
                 hexBox1.ByteProvider.InsertBytes(i, Encoding.ASCII.GetBytes(receivedData));
                 hexBox1.Invalidate();
-                i++;
-                metroTextBox1.Text=i.ToString();
+                i=i+receivedData.Length;
                 metroProgressBar1.Value = i;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MetroMessageBox.Show(this,
                     Messages.DATA_TYPE + " :" + ex.Message,
