@@ -161,21 +161,27 @@ namespace Apple_True_Tone_Recovery
         }
 
         // Standard Serial Preperations
-        private delegate void ReceivedEvent(string data);
+        private delegate void ReceivedEvent(byte[] data);
         private void serialPortLCM_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            BeginInvoke(new ReceivedEvent(DataProcessing), serialPortLCM.ReadExisting());
+            int bytesRead = serialPortLCM.BytesToRead;
+            byte[] buffer = new byte[bytesRead];
+            serialPortLCM.Read(buffer, 0, bytesRead);
+
+            // Verileri doğrudan DataProcessing metoduna gönderin
+            BeginInvoke(new ReceivedEvent(DataProcessing), buffer);
 
         }
         int i = 0;
-        private void DataProcessing(string receivedData)
+        private void DataProcessing(byte[] receivedData)
         {
 
             try
             {
-                hexBox1.ByteProvider.InsertBytes(i, Encoding.ASCII.GetBytes(receivedData));
+                hexBox1.ByteProvider.InsertBytes(i, receivedData);
+                //hexBox1.Refresh(); invoke
                 hexBox1.Invalidate();
-                i=i+receivedData.Length;
+                i = i + receivedData.Length;
                 metroProgressBar1.Value = i;
             }
             catch (Exception ex)
@@ -190,6 +196,7 @@ namespace Apple_True_Tone_Recovery
 
         private void mbtnClose_Click(object sender, EventArgs e)
         {
+            hexBox1.ByteProvider.DeleteBytes(0,hexBox1.ByteProvider.Length);
             serialPortLCM.Close();
         }
 
