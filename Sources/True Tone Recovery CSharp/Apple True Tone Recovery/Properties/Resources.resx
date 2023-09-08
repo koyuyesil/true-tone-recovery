@@ -118,11 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FORMAT_LABLE" xml:space="preserve">
-    <value>{0} / </value>
+    <value>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</value>
   </data>
   <data name="LIMIT_COVER_BOARD" xml:space="preserve">
     <value>44</value>
-    <comment>Количество символов поля Cover Board</comment>
   </data>
   <data name="TEXT_8_8P" xml:space="preserve">
     <value>8 / 8 Plus</value>

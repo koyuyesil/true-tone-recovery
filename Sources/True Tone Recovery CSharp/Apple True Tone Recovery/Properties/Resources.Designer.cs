@@ -61,7 +61,7 @@ namespace Apple_True_Tone_Recovery.Properties {
         }
         
         /// <summary>
-        ///   {0} /  benzeri yerelleştirilmiş bir dize arar.
+        ///   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string FORMAT_LABLE {
             get {

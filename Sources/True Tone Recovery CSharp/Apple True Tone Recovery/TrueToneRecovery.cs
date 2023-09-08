@@ -30,8 +30,12 @@ namespace Apple_True_Tone_Recovery
             InitializeComponent();
             PortPreparation();
             ElemetsDefaultValue();
+
+            byte deger = Convert.ToByte(255);
+            byte[] baytDizi = new byte[] { deger };
+
             hexBox1.Dock = DockStyle.Fill; // Formun içini dolduracak şekilde boyutlandırın
-            hexBox1.ByteProvider = new DynamicByteProvider(Encoding.ASCII.GetBytes(""));
+            hexBox1.ByteProvider = new DynamicByteProvider(baytDizi);
             hexBox1.Show();
         }
 
@@ -61,16 +65,21 @@ namespace Apple_True_Tone_Recovery
 
         private void ElemetsDefaultValue()
         {
+            Icon = Resources.TrueToneRecovery;
+
             cbModelType.Items.AddRange(new object[] {
             Resources.TEXT_8_8P,
             Resources.TEXT_XR,
             Resources.TEXT_X_XS_XSM});
-            tbCoverBoardSN.Text = Settings.Default.LAST_VALUE;
-            tbCoverBoardSN.MaxLength = Convert.ToInt32(Resources.LIMIT_COVER_BOARD);
-            lblNumCBSN.Text = string.Format(Resources.FORMAT_LABLE + Resources.LIMIT_COVER_BOARD, tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture));
+
             cbModelType.Text = Settings.Default.MODEL_TYPE;
             serialPortLCM.BaudRate = Settings.Default.SERIAL_BAUDRATE;
-            Icon = Resources.TrueToneRecovery;
+            tbCoverBoardSN.Text = Settings.Default.LAST_VALUE;
+            tbCoverBoardSN.MaxLength = Convert.ToInt32(Resources.LIMIT_COVER_BOARD);
+            lblNumCBSN.Text = string.Format("{0} / {1}", tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
+            
+
+
         }
 
         private void SaveChanges()
@@ -80,7 +89,7 @@ namespace Apple_True_Tone_Recovery
             Settings.Default.Save();
         }
 
-        private string DataPrepare()
+        private string DataPrepare()//veri okunduktan sonra da çağır
         {
             string data = tbCoverBoardSN.Text;
 
@@ -114,7 +123,7 @@ namespace Apple_True_Tone_Recovery
         private void tbCoverBoardSN_TextChanged(object sender, EventArgs e)
         {
             //Textbox char count example ==> 44/44 
-            lblNumCBSN.Text = string.Format(Resources.FORMAT_LABLE + Resources.LIMIT_COVER_BOARD, tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture));
+            lblNumCBSN.Text = string.Format("{0} / {1}", tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
             ButtonCheck();
         }
 
@@ -179,8 +188,7 @@ namespace Apple_True_Tone_Recovery
             try
             {
                 hexBox1.ByteProvider.InsertBytes(i, receivedData);
-                //hexBox1.Refresh(); invoke
-                hexBox1.Invalidate();
+                hexBox1.Invalidate();// refresh invoke
                 i = i + receivedData.Length;
                 metroProgressBar1.Value = i;
             }
@@ -196,13 +204,11 @@ namespace Apple_True_Tone_Recovery
 
         private void mbtnClose_Click(object sender, EventArgs e)
         {
-            hexBox1.ByteProvider.DeleteBytes(0,hexBox1.ByteProvider.Length);
+            hexBox1.ByteProvider.DeleteBytes(0, hexBox1.ByteProvider.Length);
+            hexBox1.Refresh(); // refresh normal
+            //hexBox1.Invalidate();// refresh invoke
             serialPortLCM.Close();
         }
 
-        private void metroTabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
