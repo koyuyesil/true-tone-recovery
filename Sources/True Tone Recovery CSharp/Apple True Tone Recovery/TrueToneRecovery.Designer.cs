@@ -44,9 +44,18 @@
             this.mtabWriteToLCM = new MetroFramework.Controls.MetroTabPage();
             this.lblNumCBSN = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.tbCoverBoardSN = new MetroFramework.Controls.MetroTextBox();
+            this.tbLCMSN = new MetroFramework.Controls.MetroTextBox();
             this.btnWrite = new MetroFramework.Controls.MetroButton();
             this.mbtnClose = new MetroFramework.Controls.MetroButton();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.tbGaussSN = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.tbTrueTone = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.tbMtSN = new MetroFramework.Controls.MetroTextBox();
             this.mtabReadFromLCM.SuspendLayout();
             this.mtabReadInfoLCM.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -123,7 +132,7 @@
             // 
             // 
             this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(538, 2);
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(227, 2);
             this.metroTextBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.metroTextBox1.CustomButton.Name = "";
             this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(401, 435);
@@ -183,14 +192,14 @@
             this.metroPanel1.Controls.Add(this.hexBox1);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 8;
+            this.metroPanel1.HorizontalScrollbarSize = 6;
             this.metroPanel1.Location = new System.Drawing.Point(3, 60);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(841, 542);
             this.metroPanel1.TabIndex = 26;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 8;
+            this.metroPanel1.VerticalScrollbarSize = 6;
             // 
             // hexBox1
             // 
@@ -230,9 +239,18 @@
             // 
             // mtabWriteToLCM
             // 
+            this.mtabWriteToLCM.Controls.Add(this.metroLabel4);
+            this.mtabWriteToLCM.Controls.Add(this.metroLabel5);
+            this.mtabWriteToLCM.Controls.Add(this.tbTrueTone);
+            this.mtabWriteToLCM.Controls.Add(this.metroLabel6);
+            this.mtabWriteToLCM.Controls.Add(this.metroLabel7);
+            this.mtabWriteToLCM.Controls.Add(this.tbMtSN);
+            this.mtabWriteToLCM.Controls.Add(this.metroLabel2);
+            this.mtabWriteToLCM.Controls.Add(this.metroLabel3);
+            this.mtabWriteToLCM.Controls.Add(this.tbGaussSN);
             this.mtabWriteToLCM.Controls.Add(this.lblNumCBSN);
             this.mtabWriteToLCM.Controls.Add(this.metroLabel1);
-            this.mtabWriteToLCM.Controls.Add(this.tbCoverBoardSN);
+            this.mtabWriteToLCM.Controls.Add(this.tbLCMSN);
             this.mtabWriteToLCM.Controls.Add(this.btnWrite);
             this.mtabWriteToLCM.HorizontalScrollbarBarColor = true;
             this.mtabWriteToLCM.HorizontalScrollbarHighlightOnWheel = false;
@@ -250,7 +268,7 @@
             // 
             this.lblNumCBSN.Enabled = false;
             this.lblNumCBSN.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblNumCBSN.Location = new System.Drawing.Point(335, 25);
+            this.lblNumCBSN.Location = new System.Drawing.Point(787, 25);
             this.lblNumCBSN.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
             this.lblNumCBSN.Name = "lblNumCBSN";
             this.lblNumCBSN.Size = new System.Drawing.Size(55, 21);
@@ -270,52 +288,52 @@
             this.metroLabel1.Size = new System.Drawing.Size(185, 21);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroLabel1.TabIndex = 22;
-            this.metroLabel1.Text = "Cover Board Serial Number";
+            this.metroLabel1.Text = "LCMSN";
             this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // tbCoverBoardSN
+            // tbLCMSN
             // 
-            this.tbCoverBoardSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbLCMSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // 
             // 
-            this.tbCoverBoardSN.CustomButton.Image = null;
-            this.tbCoverBoardSN.CustomButton.Location = new System.Drawing.Point(267, 1);
-            this.tbCoverBoardSN.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.tbCoverBoardSN.CustomButton.Name = "";
-            this.tbCoverBoardSN.CustomButton.Size = new System.Drawing.Size(17, 19);
-            this.tbCoverBoardSN.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbCoverBoardSN.CustomButton.TabIndex = 1;
-            this.tbCoverBoardSN.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbCoverBoardSN.CustomButton.UseSelectable = true;
-            this.tbCoverBoardSN.CustomButton.Visible = false;
-            this.tbCoverBoardSN.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.tbCoverBoardSN.Lines = new string[0];
-            this.tbCoverBoardSN.Location = new System.Drawing.Point(10, 48);
-            this.tbCoverBoardSN.Margin = new System.Windows.Forms.Padding(5, 2, 5, 0);
-            this.tbCoverBoardSN.MaxLength = 0;
-            this.tbCoverBoardSN.Name = "tbCoverBoardSN";
-            this.tbCoverBoardSN.PasswordChar = '\0';
-            this.tbCoverBoardSN.PromptText = "Cover Board SN";
-            this.tbCoverBoardSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbCoverBoardSN.SelectedText = "";
-            this.tbCoverBoardSN.SelectionLength = 0;
-            this.tbCoverBoardSN.SelectionStart = 0;
-            this.tbCoverBoardSN.ShortcutsEnabled = true;
-            this.tbCoverBoardSN.Size = new System.Drawing.Size(380, 25);
-            this.tbCoverBoardSN.Style = MetroFramework.MetroColorStyle.Purple;
-            this.tbCoverBoardSN.TabIndex = 21;
-            this.tbCoverBoardSN.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbCoverBoardSN.UseSelectable = true;
-            this.tbCoverBoardSN.WaterMark = "Cover Board SN";
-            this.tbCoverBoardSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbCoverBoardSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.tbCoverBoardSN.TextChanged += new System.EventHandler(this.tbCoverBoardSN_TextChanged);
+            this.tbLCMSN.CustomButton.Image = null;
+            this.tbLCMSN.CustomButton.Location = new System.Drawing.Point(267, 1);
+            this.tbLCMSN.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.tbLCMSN.CustomButton.Name = "";
+            this.tbLCMSN.CustomButton.Size = new System.Drawing.Size(17, 19);
+            this.tbLCMSN.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbLCMSN.CustomButton.TabIndex = 1;
+            this.tbLCMSN.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbLCMSN.CustomButton.UseSelectable = true;
+            this.tbLCMSN.CustomButton.Visible = false;
+            this.tbLCMSN.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.tbLCMSN.Lines = new string[0];
+            this.tbLCMSN.Location = new System.Drawing.Point(10, 48);
+            this.tbLCMSN.Margin = new System.Windows.Forms.Padding(5, 2, 5, 0);
+            this.tbLCMSN.MaxLength = 0;
+            this.tbLCMSN.Name = "tbLCMSN";
+            this.tbLCMSN.PasswordChar = '\0';
+            this.tbLCMSN.WaterMark = "LCMSN";
+            this.tbLCMSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbLCMSN.SelectedText = "";
+            this.tbLCMSN.SelectionLength = 0;
+            this.tbLCMSN.SelectionStart = 0;
+            this.tbLCMSN.ShortcutsEnabled = true;
+            this.tbLCMSN.Size = new System.Drawing.Size(832, 25);
+            this.tbLCMSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.tbLCMSN.TabIndex = 21;
+            this.tbLCMSN.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbLCMSN.UseSelectable = true;
+            this.tbLCMSN.WaterMark = "LCMSN";
+            this.tbLCMSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbLCMSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbLCMSN.TextChanged += new System.EventHandler(this.tbCoverBoardSN_TextChanged);
             // 
             // btnWrite
             // 
-            this.btnWrite.Location = new System.Drawing.Point(275, 80);
+            this.btnWrite.Location = new System.Drawing.Point(727, 272);
             this.btnWrite.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(115, 29);
@@ -337,6 +355,204 @@
             this.mbtnClose.Theme = MetroFramework.MetroThemeStyle.Light;
             this.mbtnClose.UseSelectable = true;
             this.mbtnClose.Click += new System.EventHandler(this.mbtnClose_Click);
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.Enabled = false;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel2.Location = new System.Drawing.Point(787, 83);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(55, 21);
+            this.metroLabel2.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroLabel2.TabIndex = 26;
+            this.metroLabel2.Text = "-- / --";
+            this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.Enabled = false;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.Location = new System.Drawing.Point(10, 83);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(185, 21);
+            this.metroLabel3.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroLabel3.TabIndex = 25;
+            this.metroLabel3.Text = "GaussSN";
+            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // tbGaussSN
+            // 
+            this.tbGaussSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            // 
+            // 
+            // 
+            this.tbGaussSN.CustomButton.Image = null;
+            this.tbGaussSN.CustomButton.Location = new System.Drawing.Point(356, 1);
+            this.tbGaussSN.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.tbGaussSN.CustomButton.Name = "";
+            this.tbGaussSN.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.tbGaussSN.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbGaussSN.CustomButton.TabIndex = 1;
+            this.tbGaussSN.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbGaussSN.CustomButton.UseSelectable = true;
+            this.tbGaussSN.CustomButton.Visible = false;
+            this.tbGaussSN.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.tbGaussSN.Lines = new string[0];
+            this.tbGaussSN.Location = new System.Drawing.Point(10, 106);
+            this.tbGaussSN.Margin = new System.Windows.Forms.Padding(5, 2, 5, 0);
+            this.tbGaussSN.MaxLength = 0;
+            this.tbGaussSN.Name = "tbGaussSN";
+            this.tbGaussSN.PasswordChar = '\0';
+            this.tbGaussSN.WaterMark = "GaussSN";
+            this.tbGaussSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbGaussSN.SelectedText = "";
+            this.tbGaussSN.SelectionLength = 0;
+            this.tbGaussSN.SelectionStart = 0;
+            this.tbGaussSN.ShortcutsEnabled = true;
+            this.tbGaussSN.Size = new System.Drawing.Size(832, 25);
+            this.tbGaussSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.tbGaussSN.TabIndex = 24;
+            this.tbGaussSN.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbGaussSN.UseSelectable = true;
+            this.tbGaussSN.WaterMark = "GaussSN";
+            this.tbGaussSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbGaussSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.Enabled = false;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel4.Location = new System.Drawing.Point(787, 199);
+            this.metroLabel4.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(55, 21);
+            this.metroLabel4.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroLabel4.TabIndex = 32;
+            this.metroLabel4.Text = "-- / --";
+            this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.Enabled = false;
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel5.Location = new System.Drawing.Point(10, 199);
+            this.metroLabel5.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(185, 21);
+            this.metroLabel5.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroLabel5.TabIndex = 31;
+            this.metroLabel5.Text = "TrueToneSN";
+            this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // tbTrueTone
+            // 
+            this.tbTrueTone.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            // 
+            // 
+            // 
+            this.tbTrueTone.CustomButton.Image = null;
+            this.tbTrueTone.CustomButton.Location = new System.Drawing.Point(356, 1);
+            this.tbTrueTone.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTrueTone.CustomButton.Name = "";
+            this.tbTrueTone.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.tbTrueTone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbTrueTone.CustomButton.TabIndex = 1;
+            this.tbTrueTone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbTrueTone.CustomButton.UseSelectable = true;
+            this.tbTrueTone.CustomButton.Visible = false;
+            this.tbTrueTone.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.tbTrueTone.Lines = new string[0];
+            this.tbTrueTone.Location = new System.Drawing.Point(10, 222);
+            this.tbTrueTone.Margin = new System.Windows.Forms.Padding(5, 2, 5, 0);
+            this.tbTrueTone.MaxLength = 0;
+            this.tbTrueTone.Name = "tbTrueTone";
+            this.tbTrueTone.PasswordChar = '\0';
+            this.tbTrueTone.WaterMark = "TrueToneSN";
+            this.tbTrueTone.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbTrueTone.SelectedText = "";
+            this.tbTrueTone.SelectionLength = 0;
+            this.tbTrueTone.SelectionStart = 0;
+            this.tbTrueTone.ShortcutsEnabled = true;
+            this.tbTrueTone.Size = new System.Drawing.Size(832, 25);
+            this.tbTrueTone.Style = MetroFramework.MetroColorStyle.Purple;
+            this.tbTrueTone.TabIndex = 30;
+            this.tbTrueTone.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbTrueTone.UseSelectable = true;
+            this.tbTrueTone.WaterMark = "TrueToneSN";
+            this.tbTrueTone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbTrueTone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.Enabled = false;
+            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel6.Location = new System.Drawing.Point(787, 141);
+            this.metroLabel6.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(55, 21);
+            this.metroLabel6.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroLabel6.TabIndex = 29;
+            this.metroLabel6.Text = "-- / --";
+            this.metroLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.Enabled = false;
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel7.Location = new System.Drawing.Point(10, 141);
+            this.metroLabel7.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(185, 21);
+            this.metroLabel7.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroLabel7.TabIndex = 28;
+            this.metroLabel7.Text = "MtSN";
+            this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // tbMtSN
+            // 
+            this.tbMtSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            // 
+            // 
+            // 
+            this.tbMtSN.CustomButton.Image = null;
+            this.tbMtSN.CustomButton.Location = new System.Drawing.Point(356, 1);
+            this.tbMtSN.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMtSN.CustomButton.Name = "";
+            this.tbMtSN.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.tbMtSN.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbMtSN.CustomButton.TabIndex = 1;
+            this.tbMtSN.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbMtSN.CustomButton.UseSelectable = true;
+            this.tbMtSN.CustomButton.Visible = false;
+            this.tbMtSN.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.tbMtSN.Lines = new string[0];
+            this.tbMtSN.Location = new System.Drawing.Point(10, 164);
+            this.tbMtSN.Margin = new System.Windows.Forms.Padding(5, 2, 5, 0);
+            this.tbMtSN.MaxLength = 0;
+            this.tbMtSN.Name = "tbMtSN";
+            this.tbMtSN.PasswordChar = '\0';
+            this.tbMtSN.WaterMark = "MtSN";
+            this.tbMtSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbMtSN.SelectedText = "";
+            this.tbMtSN.SelectionLength = 0;
+            this.tbMtSN.SelectionStart = 0;
+            this.tbMtSN.ShortcutsEnabled = true;
+            this.tbMtSN.Size = new System.Drawing.Size(832, 25);
+            this.tbMtSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.tbMtSN.TabIndex = 27;
+            this.tbMtSN.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbMtSN.UseSelectable = true;
+            this.tbMtSN.WaterMark = "MtSN";
+            this.tbMtSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbMtSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // TrueToneRecovery
             // 
@@ -376,7 +592,7 @@
         private MetroFramework.Controls.MetroTabPage mtabWriteToLCM;
         private MetroFramework.Controls.MetroLabel lblNumCBSN;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroTextBox tbCoverBoardSN;
+        private MetroFramework.Controls.MetroTextBox tbLCMSN;
         private MetroFramework.Controls.MetroButton btnWrite;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroButton metroButton1;
@@ -385,6 +601,15 @@
         private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton mbtnClose;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroTextBox tbTrueTone;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroTextBox tbMtSN;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroTextBox tbGaussSN;
     }
 }
 

@@ -31,11 +31,10 @@ namespace Apple_True_Tone_Recovery
             PortPreparation();
             ElemetsDefaultValue();
 
-            byte deger = Convert.ToByte(255);
-            byte[] baytDizi = new byte[] { deger };
+
 
             hexBox1.Dock = DockStyle.Fill; // Formun içini dolduracak şekilde boyutlandırın
-            hexBox1.ByteProvider = new DynamicByteProvider(baytDizi);
+            hexBox1.ByteProvider = new DynamicByteProvider(Encoding.ASCII.GetBytes(""));
             hexBox1.Show();
         }
 
@@ -53,7 +52,7 @@ namespace Apple_True_Tone_Recovery
         private void ButtonCheck()
         {
             if (cbPort.Text == string.Empty ||
-                tbCoverBoardSN.Text.Length < Convert.ToInt32(Resources.LIMIT_COVER_BOARD))
+                tbLCMSN.Text.Length < Convert.ToInt32(Resources.LIMIT_COVER_BOARD))
             {
                 btnWrite.Enabled = false;
             }
@@ -74,24 +73,24 @@ namespace Apple_True_Tone_Recovery
 
             cbModelType.Text = Settings.Default.MODEL_TYPE;
             serialPortLCM.BaudRate = Settings.Default.SERIAL_BAUDRATE;
-            tbCoverBoardSN.Text = Settings.Default.LAST_VALUE;
-            tbCoverBoardSN.MaxLength = Convert.ToInt32(Resources.LIMIT_COVER_BOARD);
-            lblNumCBSN.Text = string.Format("{0} / {1}", tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
-            
+            tbLCMSN.Text = Settings.Default.LAST_VALUE;
+            tbLCMSN.MaxLength = Convert.ToInt32(Resources.LIMIT_COVER_BOARD);
+            lblNumCBSN.Text = string.Format("{0} / {1}", tbLCMSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
+
 
 
         }
 
         private void SaveChanges()
         {
-            Settings.Default.LAST_VALUE = tbCoverBoardSN.Text;
+            Settings.Default.LAST_VALUE = tbLCMSN.Text;
             Settings.Default.MODEL_TYPE = cbModelType.Text;
             Settings.Default.Save();
         }
 
         private string DataPrepare()//veri okunduktan sonra da çağır
         {
-            string data = tbCoverBoardSN.Text;
+            string data = tbLCMSN.Text;
 
             if (cbModelType.Text == Resources.TEXT_8_8P)
             {
@@ -123,7 +122,7 @@ namespace Apple_True_Tone_Recovery
         private void tbCoverBoardSN_TextChanged(object sender, EventArgs e)
         {
             //Textbox char count example ==> 44/44 
-            lblNumCBSN.Text = string.Format("{0} / {1}", tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
+            lblNumCBSN.Text = string.Format("{0} / {1}", tbLCMSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
             ButtonCheck();
         }
 
@@ -191,6 +190,7 @@ namespace Apple_True_Tone_Recovery
                 hexBox1.Invalidate();// refresh invoke
                 i = i + receivedData.Length;
                 metroProgressBar1.Value = i;
+
             }
             catch (Exception ex)
             {
@@ -199,6 +199,16 @@ namespace Apple_True_Tone_Recovery
                     Messages.ERROR,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+            finally
+            {
+                //need fix
+                //serialPortLCM.Close();
+                tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
+                tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
+                tbMtSN.Text = ReadStringFromProvider(14903, 14946);
+                tbTrueTone.Text = ReadStringFromProvider(16320, 16348);
+
             }
         }
 
@@ -209,6 +219,28 @@ namespace Apple_True_Tone_Recovery
             //hexBox1.Invalidate();// refresh invoke
             serialPortLCM.Close();
         }
+        public string ReadStringFromProvider(int startOffset, int endOffset)
+        {
+            if (startOffset >= 0 && endOffset <= hexBox1.ByteProvider.Length)
+            {
+                byte[] selectedData = new byte[endOffset - startOffset];
 
+                // Belirli bir adres aralığındaki verileri okuma
+                for (long address = startOffset, i = 0; address < endOffset; address++, i++)
+                {
+                    selectedData[i] = hexBox1.ByteProvider.ReadByte(address);
+                }
+
+                // Okunan veriyi kullanabilirsiniz
+                string asciiData = System.Text.Encoding.ASCII.GetString(selectedData);
+                return asciiData;
+
+                // Dışa aktarma işlemlerini burada devam ettirebilirsiniz.
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

@@ -5,8 +5,8 @@
 #include <Wire.h>
 #define DEV_ADDR 0x51           // Device address on the I2C bus
 #define EMPTY_BYTE 0xFF         // Empty byte (can be any value)
-#define START_BYTE 0            // Start address of memory 8/8p-14903 xr-15933:16128 x/xs/xsmax-4620:9068:15660
-#define END_BYTE 4000           // End address of memory 8/8p-14946 xr-15976:16171 x/xs/xsmax-4663:9111:15703
+#define START_BYTE 0            // Start address of memory 0
+#define END_BYTE 16383         // End address of memory 16383
 #define IIC_CLOCK 400000        // I2C bus frequency
 #define SERIAL_BAUDRATE 115200  // Serial communication baud rate
 
@@ -55,7 +55,7 @@ void Read(uint16_t start_b, uint16_t end_b) {
   for (uint16_t i = start_b; i <= end_b; i++) {
     Read_byte(DEV_ADDR, i);
   }
-  Serial.print("END!!");
+  //Serial.print("END!!");
 }
 
 void Write(uint16_t start_b, uint16_t end_b) {
@@ -63,7 +63,7 @@ void Write(uint16_t start_b, uint16_t end_b) {
     Write_byte(DEV_ADDR, i, EMPTY_BYTE);
     delay(5);
   }
-  Serial.print("END!!");
+  //Serial.print("END!!");
 }
 
 void setup() {
