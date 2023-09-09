@@ -151,6 +151,8 @@ namespace Apple_True_Tone_Recovery
             try
             {
                 i = 0;
+                hexBox1.ByteProvider.DeleteBytes(0, hexBox1.ByteProvider.Length);
+                hexBox1.Refresh(); // refresh normal
                 serialPortLCM.PortName = Convert.ToString(cbPort.Text);
                 serialPortLCM.Open();
                 serialPortLCM.Write("DUMP!!");
@@ -202,12 +204,16 @@ namespace Apple_True_Tone_Recovery
             }
             finally
             {
-                //need fix
-                //serialPortLCM.Close();
-                tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
-                tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
-                tbMtSN.Text = ReadStringFromProvider(14903, 14946);
-                tbTrueTone.Text = ReadStringFromProvider(16320, 16348);
+                if (hexBox1.ByteProvider.Length >= 16383)
+                {
+                    //need fix
+                    serialPortLCM.Close();
+                    tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
+                    tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
+                    tbMtSN.Text = ReadStringFromProvider(16384, 16432);
+                    tbTrueTone.Text = ReadStringFromProvider(16320, 16348);
+                }
+
 
             }
         }
