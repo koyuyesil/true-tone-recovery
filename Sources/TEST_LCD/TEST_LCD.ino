@@ -6,7 +6,7 @@
 #define DEV_ADDR 0x51           // Device address on the I2C bus
 #define EMPTY_BYTE 0xFF         // Empty byte (can be any value)
 #define START_BYTE 0            // Start address of memory 0
-#define END_BYTE 16383         // End address of memory 16383
+#define END_BYTE 16383          // End address of memory 16383
 #define IIC_CLOCK 400000        // I2C bus frequency
 #define SERIAL_BAUDRATE 115200  // Serial communication baud rate
 
