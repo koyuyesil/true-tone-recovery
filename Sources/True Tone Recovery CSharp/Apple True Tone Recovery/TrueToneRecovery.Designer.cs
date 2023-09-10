@@ -105,7 +105,7 @@
             this.mtabLCMTabs.Controls.Add(this.mtabHexView);
             this.mtabLCMTabs.Location = new System.Drawing.Point(13, 107);
             this.mtabLCMTabs.Name = "mtabLCMTabs";
-            this.mtabLCMTabs.SelectedIndex = 0;
+            this.mtabLCMTabs.SelectedIndex = 1;
             this.mtabLCMTabs.Size = new System.Drawing.Size(855, 647);
             this.mtabLCMTabs.TabIndex = 5;
             this.mtabLCMTabs.UseSelectable = true;
@@ -128,13 +128,10 @@
             // 
             // metroTextBox1
             // 
-            // 
-            // 
-            // 
             this.metroTextBox1.CustomButton.Image = null;
             this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(227, 2);
             this.metroTextBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.Name = "NERESIBURASU";
             this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(401, 435);
             this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBox1.CustomButton.TabIndex = 1;
@@ -251,10 +248,6 @@
             // 
             // tbTrueTone
             // 
-            this.tbTrueTone.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            // 
-            // 
-            // 
             this.tbTrueTone.CustomButton.Image = null;
             this.tbTrueTone.CustomButton.Location = new System.Drawing.Point(606, 1);
             this.tbTrueTone.CustomButton.Margin = new System.Windows.Forms.Padding(2);
@@ -286,6 +279,7 @@
             this.tbTrueTone.WaterMark = "TrueToneSN";
             this.tbTrueTone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbTrueTone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbTrueTone.Click += new System.EventHandler(this.tbLCMItems_Click);
             // 
             // metroLabel6
             // 
@@ -316,10 +310,6 @@
             this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tbMtSN
-            // 
-            this.tbMtSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            // 
-            // 
             // 
             this.tbMtSN.CustomButton.Image = null;
             this.tbMtSN.CustomButton.Location = new System.Drawing.Point(606, 1);
@@ -352,6 +342,7 @@
             this.tbMtSN.WaterMark = "MtSN";
             this.tbMtSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbMtSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbMtSN.Click += new System.EventHandler(this.tbLCMItems_Click);
             // 
             // metroLabel2
             // 
@@ -382,10 +373,6 @@
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tbGaussSN
-            // 
-            this.tbGaussSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            // 
-            // 
             // 
             this.tbGaussSN.CustomButton.Image = null;
             this.tbGaussSN.CustomButton.Location = new System.Drawing.Point(606, 1);
@@ -418,6 +405,7 @@
             this.tbGaussSN.WaterMark = "GaussSN";
             this.tbGaussSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbGaussSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbGaussSN.Click += new System.EventHandler(this.tbLCMItems_Click);
             // 
             // lblNumCBSN
             // 
@@ -448,10 +436,6 @@
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tbLCMSN
-            // 
-            this.tbLCMSN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            // 
-            // 
             // 
             this.tbLCMSN.CustomButton.Image = null;
             this.tbLCMSN.CustomButton.Location = new System.Drawing.Point(606, 1);
@@ -485,7 +469,7 @@
             this.tbLCMSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbLCMSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.tbLCMSN.TextChanged += new System.EventHandler(this.tbCoverBoardSN_TextChanged);
-            this.tbLCMSN.Click += new System.EventHandler(this.tbLCMSN_Click);
+            this.tbLCMSN.Click += new System.EventHandler(this.tbLCMItems_Click);
             // 
             // btnWrite
             // 
@@ -519,7 +503,7 @@
             this.metroPanel1.Controls.Add(this.hexBox1);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 3;
+            this.metroPanel1.HorizontalScrollbarSize = 2;
             this.metroPanel1.Location = new System.Drawing.Point(3, 60);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(841, 542);

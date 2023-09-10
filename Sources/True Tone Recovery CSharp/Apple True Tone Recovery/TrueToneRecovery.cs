@@ -1,6 +1,7 @@
 ﻿using Apple_True_Tone_Recovery.Properties;
 using Be.Windows.Forms;
 using MetroFramework;
+using MetroFramework.Controls;
 using MetroFramework.Forms;
 using System;
 using System.Globalization;
@@ -275,6 +276,10 @@ namespace Apple_True_Tone_Recovery
             }
         }
 
-
+        private void tbLCMItems_Click(object sender, EventArgs e)
+        {
+            //yazı null değilse hexboxda yazının bulunduğu konumu seç ? yada tanımlı adrese göre yazıyı adresten seç hexbota
+            ((MetroTextBox)sender).Text =" hello";
+        }
     }
 }
