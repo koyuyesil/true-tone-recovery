@@ -155,7 +155,8 @@ namespace Apple_True_Tone_Recovery
                 hexBox1.Refresh(); // refresh normal
                 serialPortLCM.PortName = Convert.ToString(cbPort.Text);
                 serialPortLCM.Open();
-                serialPortLCM.Write("DUMP!!");
+                serialPortLCM.Write($"{"var"}-{"var"}:READINFO!!");
+                serialPortLCM.Write(String.Format("{0}-{1}:READINFO!!","0","56"));
 
             }
             catch (Exception ex)
@@ -168,6 +169,31 @@ namespace Apple_True_Tone_Recovery
                     MessageBoxIcon.Error);
             }
 
+        }
+
+        private void mbtnReadLcmFirmware_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                i = 0;
+                //kutuları sıfırla
+                hexBox1.ByteProvider.DeleteBytes(0, hexBox1.ByteProvider.Length);
+                hexBox1.Refresh(); // refresh normal
+
+                serialPortLCM.PortName = Convert.ToString(cbPort.Text);
+                serialPortLCM.Open();
+                serialPortLCM.Write("DUMP!!");
+
+            }
+            catch (Exception ex)
+            {
+                serialPortLCM.Close();
+                MetroMessageBox.Show(this,
+                    Messages.ERROR_WRONG_COMMAND + " :" + ex.Message,
+                    Messages.ERROR,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         // Standard Serial Preperations
@@ -248,5 +274,7 @@ namespace Apple_True_Tone_Recovery
                 return null;
             }
         }
+
+
     }
 }
