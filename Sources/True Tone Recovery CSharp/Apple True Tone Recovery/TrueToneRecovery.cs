@@ -4,8 +4,11 @@ using MetroFramework;
 using MetroFramework.Controls;
 using MetroFramework.Forms;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using static MetroFramework.Drawing.MetroPaint.BackColor;
@@ -26,6 +29,13 @@ namespace Apple_True_Tone_Recovery
 {
     public partial class TrueToneRecovery : MetroForm
     {
+        Dictionary<string, List<string>> seriNumaralari = new Dictionary<string, List<string>>
+        {
+            { "tbLCMSN", new List<string> { "0-56", "1851-2867", "3694-3710","4608-4629" } },
+            { "tbGaussSN", new List<string> { "15104-15129" } },
+            { "tbMtSN", new List<string> { "14903-14946" } },
+            { "tbTrueToneSN", new List<string> { "16320-16348" } }
+        };
         public TrueToneRecovery()
         {
             InitializeComponent();
@@ -36,6 +46,10 @@ namespace Apple_True_Tone_Recovery
 
             hexBox1.Dock = DockStyle.Fill; // Formun içini dolduracak şekilde boyutlandırın
             hexBox1.ByteProvider = new DynamicByteProvider(Encoding.ASCII.GetBytes(""));
+            hexBox1.ColumnInfoVisible = true;
+            hexBox1.LineInfoVisible = true;
+            hexBox1.ShadowSelectionVisible = true;
+            hexBox1.StringViewVisible = true;
             hexBox1.Show();
         }
 
@@ -49,17 +63,26 @@ namespace Apple_True_Tone_Recovery
             ButtonCheck();
             //sender eklenebilir orneğin basılan tuşa gore scope edilerek gelinir hangi tuştan basılırsa onu bloke eder nasıl ama? typecasting ile ledbulb örneğine bak!
         }
+
+        private void mbtnClose_Click(object sender, EventArgs e)
+        {
+            hexBox1.ByteProvider.DeleteBytes(0, hexBox1.ByteProvider.Length);
+            hexBox1.Refresh(); // refresh normal
+            //hexBox1.Invalidate();// refresh invoke
+            serialPortLCM.Close();
+        }
+
         // Standard Serial Preperations
         private void ButtonCheck()
         {
             if (cbPort.Text == string.Empty ||
-                tbLCMSN.Text.Length < Convert.ToInt32(Resources.LIMIT_COVER_BOARD))
+                tbLCMSN.Text.Length < Convert.ToInt32(Resources.LIMIT_COVER_BOARD))//need fix
             {
-                btnWrite.Enabled = false;
+                mbtnWrite.Enabled = false;
             }
             else
             {
-                btnWrite.Enabled = true;
+                mbtnWrite.Enabled = true;
             }
         }
 
@@ -75,23 +98,38 @@ namespace Apple_True_Tone_Recovery
             cbModelType.Text = Settings.Default.MODEL_TYPE;
             serialPortLCM.BaudRate = Settings.Default.SERIAL_BAUDRATE;
             tbLCMSN.Text = Settings.Default.LAST_VALUE;
-            tbLCMSN.MaxLength = Convert.ToInt32(Resources.LIMIT_COVER_BOARD);
-            lblNumCBSN.Text = string.Format("{0} / {1}", tbLCMSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
+            metroLabel1.Text = "LCMSN: Bu kodun ilk 17 hanesi yanlışsa, bir açılır pencere oluşturabilir ve denetim yazılımı tarafından tanınabilir.\n" +
+                "GaussSN: Bu kodun şu an için herhangi bir işlevsel etkisi yok.\n" +
+                "MTSN: Bu kod, TrueTone'u etkiler; kaybedilirse, orijinal ekran olmadan Cover Board Serial ile TrueTone onarılabilir.\n" +
+                "TrueToneSN: Bu kod, TrueTone'u etkiler; kaybedilirse, orijinal dokunmatik IC (MtSN kodu) verilerini kopyalayabilirsiniz.";
+            //tbCoverBoardSN.MaxLength = Convert.ToInt32(Resources.LIMIT_COVER_BOARD);
+            //lblCoverBoardSN.Text = string.Format("{0} / {1}", tbCoverBoardSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
 
 
 
         }
 
+        private void ResetForms()
+        {
+            i = 0;
+            //kutuları sıfırla
+            hexBox1.ByteProvider.DeleteBytes(0, hexBox1.ByteProvider.Length);
+            hexBox1.Refresh(); // refresh normal
+        }
+
         private void SaveChanges()
         {
-            Settings.Default.LAST_VALUE = tbLCMSN.Text;
-            Settings.Default.MODEL_TYPE = cbModelType.Text;
+            //Settings.Default.LAST_VALUE = tbLCMSN.Text;
+            //Settings.Default.LAST_VALUE = tbLCMSN.Text;
+            //Settings.Default.LAST_VALUE = tbLCMSN.Text;
+            //Settings.Default.LAST_VALUE = tbLCMSN.Text;
+            //Settings.Default.MODEL_TYPE = cbModelType.Text;
             Settings.Default.Save();
         }
 
         private string DataPrepare()//veri okunduktan sonra da çağır
         {
-            string data = tbLCMSN.Text;
+            string data = tbMtSN.Text;
 
             if (cbModelType.Text == Resources.TEXT_8_8P)
             {
@@ -105,7 +143,6 @@ namespace Apple_True_Tone_Recovery
             {
                 data += Settings.Default.KEY_X_XS_XSM; //xxxxxxxxxxxxxxxxx+yyyyyyyyyyyyyyyyyyyyyyyyyyC
             }
-
             return data;
         }
 
@@ -120,31 +157,74 @@ namespace Apple_True_Tone_Recovery
             PortPreparation();
         }
 
-        private void tbCoverBoardSN_TextChanged(object sender, EventArgs e)
+        private void tbLCMItems_DoubleClick(object sender, EventArgs e)
         {
-            //Textbox char count example ==> 44/44 
-            lblNumCBSN.Text = string.Format("{0} / {1}", tbLCMSN.Text.Length.ToString(CultureInfo.InvariantCulture), Resources.LIMIT_COVER_BOARD);
-            ButtonCheck();
+            //yazı null değilse hexboxda yazının bulunduğu konumu seç ? yada tanımlı adrese göre yazıyı adresten seç hexbota
+            List<string> degerler = seriNumaralari.ContainsKey(((MetroTextBox)sender).Name) ? seriNumaralari[((MetroTextBox)sender).Name] : new List<string>();
+            foreach (string deger in degerler)
+            {
+                string[] araliklar = deger.Split('-');
+                int start = int.Parse(araliklar[0]);
+                int end = int.Parse(araliklar[1]);
+                hexBox1.Select(start, end - start + 1);
+            }
+            mtabLCMTabs.SelectTab(2);
         }
 
-
-        private void btnWrite_Click(object sender, EventArgs e)
+        private void tbLCMItems_TextChanged(object sender, EventArgs e)
         {
-            try
+            foreach (Control ChildCntl in this.mtabLCMTabs.Controls[1].Controls)
             {
-                serialPortLCM.PortName = Convert.ToString(cbPort.Text);
-                serialPortLCM.Open();
-                serialPortLCM.Write(DataPrepare());
-                serialPortLCM.Close();
+                if (ChildCntl.Name == "lbl" + ((MetroTextBox)sender).Name.Substring(2))
+                {
+                    ChildCntl.Text = string.Format("{0} / {1}", ((MetroTextBox)sender).Text.Length.ToString(CultureInfo.InvariantCulture), 44);
+                }
             }
-            catch
-            {
-                MetroMessageBox.Show(this,
-                     Messages.ERROR_RELATION,
-                     Messages.ERROR,
-                     MessageBoxButtons.OK,
-                     MessageBoxIcon.Error);
-            }
+            ButtonCheck();
+
+            //if (((MetroTextBox)sender).Name == "tbCoverBoardSN")
+            //{
+            //    foreach (Control ChildCntl in this.mtabLCMTabs.Controls[1].Controls)
+            //    {
+            //        if (ChildCntl.Name == "lbl" + ((MetroTextBox)sender).Name.Substring(2))
+            //        {
+            //            ChildCntl.Text = string.Format("{0} / {1}", ((MetroTextBox)sender).Text.Length.ToString(CultureInfo.InvariantCulture), 79);
+            //        }
+            //    }
+            //}
+            //else if (((MetroTextBox)sender).Name == "tbGaussSN")
+            //{
+            //    foreach (Control ChildCntl in this.mtabLCMTabs.Controls[1].Controls)
+            //    {
+            //        if (ChildCntl.Name == "lbl" + ((MetroTextBox)sender).Name.Substring(2))
+            //        {
+            //            ChildCntl.Text= string.Format("{0} / {1}", ((MetroTextBox)sender).Text.Length.ToString(CultureInfo.InvariantCulture), 26);
+            //        }  
+            //    }
+            //}
+            //else if (((MetroTextBox)sender).Name == "tbMtSN")
+            //{
+            //    foreach (Control ChildCntl in this.mtabLCMTabs.Controls[1].Controls)
+            //    {
+            //        if (ChildCntl.Name == "lbl" + ((MetroTextBox)sender).Name.Substring(2))
+            //        {
+            //            ChildCntl.Text = string.Format("{0} / {1}", ((MetroTextBox)sender).Text.Length.ToString(CultureInfo.InvariantCulture), 0);
+            //        }
+            //    }
+            //}
+            //else if (((MetroTextBox)sender).Name == "tbTrueToneSN")
+            //{
+            //    foreach (Control ChildCntl in this.mtabLCMTabs.Controls[1].Controls)
+            //    {
+            //        if (ChildCntl.Name == "lbl"+((MetroTextBox)sender).Name.Substring(2))
+            //        {
+            //            ChildCntl.Text = string.Format("{0} / {1}", ((MetroTextBox)sender).Text.Length.ToString(CultureInfo.InvariantCulture), 28);
+            //        }
+            //    }
+            //}
+
+
+
         }
 
         private void mbtnReadLcmInfo_Click(object sender, EventArgs e)
@@ -157,7 +237,7 @@ namespace Apple_True_Tone_Recovery
                 serialPortLCM.PortName = Convert.ToString(cbPort.Text);
                 serialPortLCM.Open();
                 serialPortLCM.Write($"{"var"}-{"var"}:READINFO!!");
-                serialPortLCM.Write(String.Format("{0}-{1}:READINFO!!","0","56"));
+                serialPortLCM.Write(String.Format("{0}-{1}:READINFO!!", "0", "56"));
 
             }
             catch (Exception ex)
@@ -176,11 +256,7 @@ namespace Apple_True_Tone_Recovery
         {
             try
             {
-                i = 0;
-                //kutuları sıfırla
-                hexBox1.ByteProvider.DeleteBytes(0, hexBox1.ByteProvider.Length);
-                hexBox1.Refresh(); // refresh normal
-
+                ResetForms();
                 serialPortLCM.PortName = Convert.ToString(cbPort.Text);
                 serialPortLCM.Open();
                 serialPortLCM.Write("DUMP!!");
@@ -196,6 +272,8 @@ namespace Apple_True_Tone_Recovery
                     MessageBoxIcon.Error);
             }
         }
+
+
 
         // Standard Serial Preperations
         private delegate void ReceivedEvent(byte[] data);
@@ -237,20 +315,12 @@ namespace Apple_True_Tone_Recovery
                     serialPortLCM.Close();
                     tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
-                    tbMtSN.Text = ReadStringFromProvider(16384, 16432);
-                    tbTrueTone.Text = ReadStringFromProvider(16320, 16348);
+                    tbMtSN.Text = ReadStringFromProvider(14903, 14946);
+                    tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
                 }
 
 
             }
-        }
-
-        private void mbtnClose_Click(object sender, EventArgs e)
-        {
-            hexBox1.ByteProvider.DeleteBytes(0, hexBox1.ByteProvider.Length);
-            hexBox1.Refresh(); // refresh normal
-            //hexBox1.Invalidate();// refresh invoke
-            serialPortLCM.Close();
         }
         public string ReadStringFromProvider(int startOffset, int endOffset)
         {
@@ -276,10 +346,79 @@ namespace Apple_True_Tone_Recovery
             }
         }
 
-        private void tbLCMItems_Click(object sender, EventArgs e)
+        private void mbtnOpenLCMFirmware_Click(object sender, EventArgs e)
         {
-            //yazı null değilse hexboxda yazının bulunduğu konumu seç ? yada tanımlı adrese göre yazıyı adresten seç hexbota
-            ((MetroTextBox)sender).Text =" hello";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.InitialDirectory = "C:\\"; // Başlangıç dizinini belirleyin
+            openFileDialog.Filter = "Binary Files (*.bin)|*.bin|Tüm Dosyalar (*.*)|*.*";
+            openFileDialog.FilterIndex = 1;
+            //openFileDialog.Multiselect = false;
+            openFileDialog.AddExtension = true;
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ResetForms();
+                try
+                {
+                    string kaynakDosyaYolu = openFileDialog.FileName;
+                    byte[] okunanBaytlar;
+
+                    // Dosyayı açın ve baytları okuyun
+                    using (FileStream kaynakDosya = File.OpenRead(kaynakDosyaYolu))
+                    {
+                        okunanBaytlar = new byte[kaynakDosya.Length];
+                        kaynakDosya.Read(okunanBaytlar, 0, (int)kaynakDosya.Length);
+                    }
+                    hexBox1.ByteProvider.InsertBytes(0, okunanBaytlar);
+                    tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
+                    tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
+                    tbMtSN.Text = ReadStringFromProvider(14903, 14947);
+                    tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                    //// Kaydedilecek dosyanın yolunu belirleyin
+                    //SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    //saveFileDialog.Filter = "Metin Dosyaları (*.txt)|*.txt|Tüm Dosyalar (*.*)|*.*";
+                    //saveFileDialog.FilterIndex = 1;
+                    //saveFileDialog.RestoreDirectory = true;
+
+                    //if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    string hedefDosyaYolu = saveFileDialog.FileName;
+
+                    //    // Okunan baytları yeni dosyaya kaydedin
+                    //    using (FileStream hedefDosya = File.Create(hedefDosyaYolu))
+                    //    {
+                    //        hedefDosya.Write(okunanBaytlar, 0, okunanBaytlar.Length);
+                    //    }
+
+                    //    Console.WriteLine("Dosya başarıyla kopyalandı.");
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Hata: " + ex.Message);
+                }
+            }
+        }
+
+        private void mbtnWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPortLCM.PortName = Convert.ToString(cbPort.Text);
+                serialPortLCM.Open();
+                serialPortLCM.Write(DataPrepare());
+                serialPortLCM.Close();
+            }
+            catch
+            {
+                MetroMessageBox.Show(this,
+                     Messages.ERROR_RELATION,
+                     Messages.ERROR,
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
+            }
         }
     }
 }

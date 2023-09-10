@@ -34,24 +34,26 @@
             this.serialPortLCM = new System.IO.Ports.SerialPort(this.components);
             this.mtabLCMTabs = new MetroFramework.Controls.MetroTabControl();
             this.mtabReadLCMInfo = new MetroFramework.Controls.MetroTabPage();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.mtbInfo = new MetroFramework.Controls.MetroTextBox();
+            this.mbtnInfo = new MetroFramework.Controls.MetroButton();
             this.mtabReadWriteLCM = new MetroFramework.Controls.MetroTabPage();
+            this.mbtnOpenLCMFirmware = new MetroFramework.Controls.MetroButton();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
             this.mbtnReadLcmFirmware = new MetroFramework.Controls.MetroButton();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.tbTrueTone = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.lblTrueToneSN = new MetroFramework.Controls.MetroLabel();
+            this.lblTrueTone = new MetroFramework.Controls.MetroLabel();
+            this.tbTrueToneSN = new MetroFramework.Controls.MetroTextBox();
+            this.lblMtSN = new MetroFramework.Controls.MetroLabel();
+            this.lblMt = new MetroFramework.Controls.MetroLabel();
             this.tbMtSN = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.lblGaussSN = new MetroFramework.Controls.MetroLabel();
+            this.lblGauss = new MetroFramework.Controls.MetroLabel();
             this.tbGaussSN = new MetroFramework.Controls.MetroTextBox();
-            this.lblNumCBSN = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lblLCMSN = new MetroFramework.Controls.MetroLabel();
+            this.lblLCM = new MetroFramework.Controls.MetroLabel();
             this.tbLCMSN = new MetroFramework.Controls.MetroTextBox();
-            this.btnWrite = new MetroFramework.Controls.MetroButton();
+            this.mbtnWrite = new MetroFramework.Controls.MetroButton();
             this.mtabHexView = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.hexBox1 = new Be.Windows.Forms.HexBox();
@@ -112,8 +114,8 @@
             // 
             // mtabReadLCMInfo
             // 
-            this.mtabReadLCMInfo.Controls.Add(this.metroTextBox1);
-            this.mtabReadLCMInfo.Controls.Add(this.metroButton1);
+            this.mtabReadLCMInfo.Controls.Add(this.mtbInfo);
+            this.mtabReadLCMInfo.Controls.Add(this.mbtnInfo);
             this.mtabReadLCMInfo.HorizontalScrollbarBarColor = true;
             this.mtabReadLCMInfo.HorizontalScrollbarHighlightOnWheel = false;
             this.mtabReadLCMInfo.HorizontalScrollbarSize = 2;
@@ -126,65 +128,70 @@
             this.mtabReadLCMInfo.VerticalScrollbarHighlightOnWheel = false;
             this.mtabReadLCMInfo.VerticalScrollbarSize = 2;
             // 
-            // metroTextBox1
+            // mtbInfo
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(227, 2);
-            this.metroTextBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.metroTextBox1.CustomButton.Name = "NERESIBURASU";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(401, 435);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(3, 62);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Multiline = true;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(841, 540);
-            this.metroTextBox1.TabIndex = 22;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(5, 25);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(115, 29);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroButton1.TabIndex = 6;
-            this.metroButton1.Text = "Read LCM Info";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.mbtnReadLcmInfo_Click);
+            // 
+            this.mtbInfo.CustomButton.Image = null;
+            this.mtbInfo.CustomButton.Location = new System.Drawing.Point(227, 2);
+            this.mtbInfo.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.mtbInfo.CustomButton.Name = "mtbInfo";
+            this.mtbInfo.CustomButton.Size = new System.Drawing.Size(401, 435);
+            this.mtbInfo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.mtbInfo.CustomButton.TabIndex = 1;
+            this.mtbInfo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mtbInfo.CustomButton.UseSelectable = true;
+            this.mtbInfo.CustomButton.Visible = false;
+            this.mtbInfo.Lines = new string[0];
+            this.mtbInfo.Location = new System.Drawing.Point(3, 62);
+            this.mtbInfo.MaxLength = 32767;
+            this.mtbInfo.Multiline = true;
+            this.mtbInfo.Name = "mtbInfo";
+            this.mtbInfo.PasswordChar = '\0';
+            this.mtbInfo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.mtbInfo.SelectedText = "";
+            this.mtbInfo.SelectionLength = 0;
+            this.mtbInfo.SelectionStart = 0;
+            this.mtbInfo.ShortcutsEnabled = true;
+            this.mtbInfo.Size = new System.Drawing.Size(841, 540);
+            this.mtbInfo.TabIndex = 22;
+            this.mtbInfo.UseSelectable = true;
+            this.mtbInfo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.mtbInfo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // mbtnInfo
+            // 
+            this.mbtnInfo.Location = new System.Drawing.Point(5, 25);
+            this.mbtnInfo.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
+            this.mbtnInfo.Name = "mbtnInfo";
+            this.mbtnInfo.Size = new System.Drawing.Size(115, 29);
+            this.mbtnInfo.Style = MetroFramework.MetroColorStyle.Purple;
+            this.mbtnInfo.TabIndex = 6;
+            this.mbtnInfo.Text = "Read LCM Info";
+            this.mbtnInfo.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mbtnInfo.UseSelectable = true;
+            this.mbtnInfo.Click += new System.EventHandler(this.mbtnReadLcmInfo_Click);
             // 
             // mtabReadWriteLCM
             // 
+            this.mtabReadWriteLCM.Controls.Add(this.mbtnOpenLCMFirmware);
+            this.mtabReadWriteLCM.Controls.Add(this.metroLabel1);
             this.mtabReadWriteLCM.Controls.Add(this.metroProgressBar1);
             this.mtabReadWriteLCM.Controls.Add(this.mbtnReadLcmFirmware);
-            this.mtabReadWriteLCM.Controls.Add(this.metroLabel4);
-            this.mtabReadWriteLCM.Controls.Add(this.metroLabel5);
-            this.mtabReadWriteLCM.Controls.Add(this.tbTrueTone);
-            this.mtabReadWriteLCM.Controls.Add(this.metroLabel6);
-            this.mtabReadWriteLCM.Controls.Add(this.metroLabel7);
+            this.mtabReadWriteLCM.Controls.Add(this.lblTrueToneSN);
+            this.mtabReadWriteLCM.Controls.Add(this.lblTrueTone);
+            this.mtabReadWriteLCM.Controls.Add(this.tbTrueToneSN);
+            this.mtabReadWriteLCM.Controls.Add(this.lblMtSN);
+            this.mtabReadWriteLCM.Controls.Add(this.lblMt);
             this.mtabReadWriteLCM.Controls.Add(this.tbMtSN);
-            this.mtabReadWriteLCM.Controls.Add(this.metroLabel2);
-            this.mtabReadWriteLCM.Controls.Add(this.metroLabel3);
+            this.mtabReadWriteLCM.Controls.Add(this.lblGaussSN);
+            this.mtabReadWriteLCM.Controls.Add(this.lblGauss);
             this.mtabReadWriteLCM.Controls.Add(this.tbGaussSN);
-            this.mtabReadWriteLCM.Controls.Add(this.lblNumCBSN);
-            this.mtabReadWriteLCM.Controls.Add(this.metroLabel1);
+            this.mtabReadWriteLCM.Controls.Add(this.lblLCMSN);
+            this.mtabReadWriteLCM.Controls.Add(this.lblLCM);
             this.mtabReadWriteLCM.Controls.Add(this.tbLCMSN);
-            this.mtabReadWriteLCM.Controls.Add(this.btnWrite);
+            this.mtabReadWriteLCM.Controls.Add(this.mbtnWrite);
             this.mtabReadWriteLCM.HorizontalScrollbarBarColor = true;
             this.mtabReadWriteLCM.HorizontalScrollbarHighlightOnWheel = false;
             this.mtabReadWriteLCM.HorizontalScrollbarSize = 2;
@@ -196,6 +203,27 @@
             this.mtabReadWriteLCM.VerticalScrollbarBarColor = true;
             this.mtabReadWriteLCM.VerticalScrollbarHighlightOnWheel = false;
             this.mtabReadWriteLCM.VerticalScrollbarSize = 2;
+            // 
+            // mbtnOpenLCMFirmware
+            // 
+            this.mbtnOpenLCMFirmware.Location = new System.Drawing.Point(140, 272);
+            this.mbtnOpenLCMFirmware.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
+            this.mbtnOpenLCMFirmware.Name = "mbtnOpenLCMFirmware";
+            this.mbtnOpenLCMFirmware.Size = new System.Drawing.Size(115, 30);
+            this.mbtnOpenLCMFirmware.Style = MetroFramework.MetroColorStyle.Purple;
+            this.mbtnOpenLCMFirmware.TabIndex = 36;
+            this.mbtnOpenLCMFirmware.Text = "Open LCM Firmware";
+            this.mbtnOpenLCMFirmware.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mbtnOpenLCMFirmware.UseSelectable = true;
+            this.mbtnOpenLCMFirmware.Click += new System.EventHandler(this.mbtnOpenLCMFirmware_Click);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(10, 330);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(0, 0);
+            this.metroLabel1.TabIndex = 35;
             // 
             // metroProgressBar1
             // 
@@ -218,98 +246,105 @@
             this.mbtnReadLcmFirmware.UseSelectable = true;
             this.mbtnReadLcmFirmware.Click += new System.EventHandler(this.mbtnReadLcmFirmware_Click);
             // 
-            // metroLabel4
+            // lblTrueToneSN
             // 
-            this.metroLabel4.Enabled = false;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel4.Location = new System.Drawing.Point(787, 199);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(55, 21);
-            this.metroLabel4.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroLabel4.TabIndex = 32;
-            this.metroLabel4.Text = "-- / --";
-            this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblTrueToneSN.Enabled = false;
+            this.lblTrueToneSN.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblTrueToneSN.Location = new System.Drawing.Point(787, 199);
+            this.lblTrueToneSN.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblTrueToneSN.Name = "lblTrueToneSN";
+            this.lblTrueToneSN.Size = new System.Drawing.Size(55, 21);
+            this.lblTrueToneSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblTrueToneSN.TabIndex = 32;
+            this.lblTrueToneSN.Text = "-- / --";
+            this.lblTrueToneSN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTrueToneSN.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // metroLabel5
+            // lblTrueTone
             // 
-            this.metroLabel5.Enabled = false;
-            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(10, 199);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(185, 21);
-            this.metroLabel5.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroLabel5.TabIndex = 31;
-            this.metroLabel5.Text = "TrueToneSN";
-            this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblTrueTone.Enabled = false;
+            this.lblTrueTone.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblTrueTone.Location = new System.Drawing.Point(10, 199);
+            this.lblTrueTone.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblTrueTone.Name = "lblTrueTone";
+            this.lblTrueTone.Size = new System.Drawing.Size(185, 21);
+            this.lblTrueTone.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblTrueTone.TabIndex = 31;
+            this.lblTrueTone.Text = "TrueToneSN";
+            this.lblTrueTone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTrueTone.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // tbTrueTone
+            // tbTrueToneSN
             // 
-            this.tbTrueTone.CustomButton.Image = null;
-            this.tbTrueTone.CustomButton.Location = new System.Drawing.Point(606, 1);
-            this.tbTrueTone.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.tbTrueTone.CustomButton.Name = "";
-            this.tbTrueTone.CustomButton.Size = new System.Drawing.Size(17, 19);
-            this.tbTrueTone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbTrueTone.CustomButton.TabIndex = 1;
-            this.tbTrueTone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbTrueTone.CustomButton.UseSelectable = true;
-            this.tbTrueTone.CustomButton.Visible = false;
-            this.tbTrueTone.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.tbTrueTone.Lines = new string[0];
-            this.tbTrueTone.Location = new System.Drawing.Point(10, 222);
-            this.tbTrueTone.Margin = new System.Windows.Forms.Padding(5, 2, 5, 0);
-            this.tbTrueTone.MaxLength = 0;
-            this.tbTrueTone.Name = "tbTrueTone";
-            this.tbTrueTone.PasswordChar = '\0';
-            this.tbTrueTone.PromptText = "TrueToneSN";
-            this.tbTrueTone.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbTrueTone.SelectedText = "";
-            this.tbTrueTone.SelectionLength = 0;
-            this.tbTrueTone.SelectionStart = 0;
-            this.tbTrueTone.ShortcutsEnabled = true;
-            this.tbTrueTone.Size = new System.Drawing.Size(832, 25);
-            this.tbTrueTone.Style = MetroFramework.MetroColorStyle.Purple;
-            this.tbTrueTone.TabIndex = 10;
-            this.tbTrueTone.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbTrueTone.UseSelectable = true;
-            this.tbTrueTone.WaterMark = "TrueToneSN";
-            this.tbTrueTone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbTrueTone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.tbTrueTone.Click += new System.EventHandler(this.tbLCMItems_Click);
             // 
-            // metroLabel6
             // 
-            this.metroLabel6.Enabled = false;
-            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.Location = new System.Drawing.Point(787, 141);
-            this.metroLabel6.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(55, 21);
-            this.metroLabel6.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroLabel6.TabIndex = 29;
-            this.metroLabel6.Text = "-- / --";
-            this.metroLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // metroLabel7
+            this.tbTrueToneSN.CustomButton.Image = null;
+            this.tbTrueToneSN.CustomButton.Location = new System.Drawing.Point(606, 1);
+            this.tbTrueToneSN.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTrueToneSN.CustomButton.Name = "";
+            this.tbTrueToneSN.CustomButton.Size = new System.Drawing.Size(17, 19);
+            this.tbTrueToneSN.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbTrueToneSN.CustomButton.TabIndex = 1;
+            this.tbTrueToneSN.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbTrueToneSN.CustomButton.UseSelectable = true;
+            this.tbTrueToneSN.CustomButton.Visible = false;
+            this.tbTrueToneSN.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.tbTrueToneSN.Lines = new string[0];
+            this.tbTrueToneSN.Location = new System.Drawing.Point(10, 222);
+            this.tbTrueToneSN.Margin = new System.Windows.Forms.Padding(5, 2, 5, 0);
+            this.tbTrueToneSN.MaxLength = 0;
+            this.tbTrueToneSN.Name = "tbTrueToneSN";
+            this.tbTrueToneSN.PasswordChar = '\0';
+            this.tbTrueToneSN.PromptText = "TrueTone Serial Number";
+            this.tbTrueToneSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbTrueToneSN.SelectedText = "";
+            this.tbTrueToneSN.SelectionLength = 0;
+            this.tbTrueToneSN.SelectionStart = 0;
+            this.tbTrueToneSN.ShortcutsEnabled = true;
+            this.tbTrueToneSN.Size = new System.Drawing.Size(832, 25);
+            this.tbTrueToneSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.tbTrueToneSN.TabIndex = 10;
+            this.tbTrueToneSN.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbTrueToneSN.UseSelectable = true;
+            this.tbTrueToneSN.WaterMark = "TrueTone Serial Number";
+            this.tbTrueToneSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbTrueToneSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbTrueToneSN.TextChanged += new System.EventHandler(this.tbLCMItems_TextChanged);
+            this.tbTrueToneSN.DoubleClick += new System.EventHandler(this.tbLCMItems_DoubleClick);
             // 
-            this.metroLabel7.Enabled = false;
-            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel7.Location = new System.Drawing.Point(10, 141);
-            this.metroLabel7.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(185, 21);
-            this.metroLabel7.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroLabel7.TabIndex = 28;
-            this.metroLabel7.Text = "MtSN";
-            this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Light;
+            // lblMtSN
+            // 
+            this.lblMtSN.Enabled = false;
+            this.lblMtSN.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblMtSN.Location = new System.Drawing.Point(787, 141);
+            this.lblMtSN.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblMtSN.Name = "lblMtSN";
+            this.lblMtSN.Size = new System.Drawing.Size(55, 21);
+            this.lblMtSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblMtSN.TabIndex = 29;
+            this.lblMtSN.Text = "-- / --";
+            this.lblMtSN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMtSN.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // lblMt
+            // 
+            this.lblMt.Enabled = false;
+            this.lblMt.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblMt.Location = new System.Drawing.Point(10, 141);
+            this.lblMt.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblMt.Name = "lblMt";
+            this.lblMt.Size = new System.Drawing.Size(185, 21);
+            this.lblMt.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblMt.TabIndex = 28;
+            this.lblMt.Text = "MtSN";
+            this.lblMt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblMt.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tbMtSN
+            // 
+            // 
+            // 
             // 
             this.tbMtSN.CustomButton.Image = null;
             this.tbMtSN.CustomButton.Location = new System.Drawing.Point(606, 1);
@@ -328,7 +363,7 @@
             this.tbMtSN.MaxLength = 0;
             this.tbMtSN.Name = "tbMtSN";
             this.tbMtSN.PasswordChar = '\0';
-            this.tbMtSN.PromptText = "MtSN";
+            this.tbMtSN.PromptText = "Mt Serial Number (Cover Board Serial Number)";
             this.tbMtSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbMtSN.SelectedText = "";
             this.tbMtSN.SelectionLength = 0;
@@ -339,40 +374,44 @@
             this.tbMtSN.TabIndex = 9;
             this.tbMtSN.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbMtSN.UseSelectable = true;
-            this.tbMtSN.WaterMark = "MtSN";
+            this.tbMtSN.WaterMark = "Mt Serial Number (Cover Board Serial Number)";
             this.tbMtSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbMtSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.tbMtSN.Click += new System.EventHandler(this.tbLCMItems_Click);
+            this.tbMtSN.TextChanged += new System.EventHandler(this.tbLCMItems_TextChanged);
+            this.tbMtSN.DoubleClick += new System.EventHandler(this.tbLCMItems_DoubleClick);
             // 
-            // metroLabel2
+            // lblGaussSN
             // 
-            this.metroLabel2.Enabled = false;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(787, 83);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(55, 21);
-            this.metroLabel2.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroLabel2.TabIndex = 26;
-            this.metroLabel2.Text = "-- / --";
-            this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblGaussSN.Enabled = false;
+            this.lblGaussSN.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblGaussSN.Location = new System.Drawing.Point(787, 83);
+            this.lblGaussSN.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblGaussSN.Name = "lblGaussSN";
+            this.lblGaussSN.Size = new System.Drawing.Size(55, 21);
+            this.lblGaussSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblGaussSN.TabIndex = 26;
+            this.lblGaussSN.Text = "-- / --";
+            this.lblGaussSN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblGaussSN.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // metroLabel3
+            // lblGauss
             // 
-            this.metroLabel3.Enabled = false;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(10, 83);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(185, 21);
-            this.metroLabel3.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroLabel3.TabIndex = 25;
-            this.metroLabel3.Text = "GaussSN";
-            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblGauss.Enabled = false;
+            this.lblGauss.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblGauss.Location = new System.Drawing.Point(10, 83);
+            this.lblGauss.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblGauss.Name = "lblGauss";
+            this.lblGauss.Size = new System.Drawing.Size(185, 21);
+            this.lblGauss.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblGauss.TabIndex = 25;
+            this.lblGauss.Text = "GaussSN";
+            this.lblGauss.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblGauss.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tbGaussSN
+            // 
+            // 
+            // 
             // 
             this.tbGaussSN.CustomButton.Image = null;
             this.tbGaussSN.CustomButton.Location = new System.Drawing.Point(606, 1);
@@ -391,7 +430,7 @@
             this.tbGaussSN.MaxLength = 0;
             this.tbGaussSN.Name = "tbGaussSN";
             this.tbGaussSN.PasswordChar = '\0';
-            this.tbGaussSN.PromptText = "GaussSN";
+            this.tbGaussSN.PromptText = "Gauss Serial Number";
             this.tbGaussSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbGaussSN.SelectedText = "";
             this.tbGaussSN.SelectionLength = 0;
@@ -402,40 +441,44 @@
             this.tbGaussSN.TabIndex = 8;
             this.tbGaussSN.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbGaussSN.UseSelectable = true;
-            this.tbGaussSN.WaterMark = "GaussSN";
+            this.tbGaussSN.WaterMark = "Gauss Serial Number";
             this.tbGaussSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbGaussSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.tbGaussSN.Click += new System.EventHandler(this.tbLCMItems_Click);
+            this.tbGaussSN.TextChanged += new System.EventHandler(this.tbLCMItems_TextChanged);
+            this.tbGaussSN.DoubleClick += new System.EventHandler(this.tbLCMItems_DoubleClick);
             // 
-            // lblNumCBSN
+            // lblLCMSN
             // 
-            this.lblNumCBSN.Enabled = false;
-            this.lblNumCBSN.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblNumCBSN.Location = new System.Drawing.Point(787, 25);
-            this.lblNumCBSN.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.lblNumCBSN.Name = "lblNumCBSN";
-            this.lblNumCBSN.Size = new System.Drawing.Size(55, 21);
-            this.lblNumCBSN.Style = MetroFramework.MetroColorStyle.Purple;
-            this.lblNumCBSN.TabIndex = 23;
-            this.lblNumCBSN.Text = "-- / --";
-            this.lblNumCBSN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblNumCBSN.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblLCMSN.Enabled = false;
+            this.lblLCMSN.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblLCMSN.Location = new System.Drawing.Point(787, 25);
+            this.lblLCMSN.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblLCMSN.Name = "lblLCMSN";
+            this.lblLCMSN.Size = new System.Drawing.Size(55, 21);
+            this.lblLCMSN.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblLCMSN.TabIndex = 23;
+            this.lblLCMSN.Text = "-- / --";
+            this.lblLCMSN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblLCMSN.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // metroLabel1
+            // lblLCM
             // 
-            this.metroLabel1.Enabled = false;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(5, 25);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(185, 21);
-            this.metroLabel1.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroLabel1.TabIndex = 22;
-            this.metroLabel1.Text = "LCMSN";
-            this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblLCM.Enabled = false;
+            this.lblLCM.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblLCM.Location = new System.Drawing.Point(5, 25);
+            this.lblLCM.Margin = new System.Windows.Forms.Padding(5, 10, 5, 0);
+            this.lblLCM.Name = "lblLCM";
+            this.lblLCM.Size = new System.Drawing.Size(185, 21);
+            this.lblLCM.Style = MetroFramework.MetroColorStyle.Purple;
+            this.lblLCM.TabIndex = 22;
+            this.lblLCM.Text = "LCMSN";
+            this.lblLCM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLCM.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tbLCMSN
+            // 
+            // 
+            // 
             // 
             this.tbLCMSN.CustomButton.Image = null;
             this.tbLCMSN.CustomButton.Location = new System.Drawing.Point(606, 1);
@@ -454,7 +497,7 @@
             this.tbLCMSN.MaxLength = 0;
             this.tbLCMSN.Name = "tbLCMSN";
             this.tbLCMSN.PasswordChar = '\0';
-            this.tbLCMSN.PromptText = "LCMSN";
+            this.tbLCMSN.PromptText = "LCM Serial Number";
             this.tbLCMSN.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbLCMSN.SelectedText = "";
             this.tbLCMSN.SelectionLength = 0;
@@ -465,23 +508,24 @@
             this.tbLCMSN.TabIndex = 7;
             this.tbLCMSN.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbLCMSN.UseSelectable = true;
-            this.tbLCMSN.WaterMark = "LCMSN";
+            this.tbLCMSN.WaterMark = "LCM Serial Number";
             this.tbLCMSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbLCMSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.tbLCMSN.TextChanged += new System.EventHandler(this.tbCoverBoardSN_TextChanged);
-            this.tbLCMSN.Click += new System.EventHandler(this.tbLCMItems_Click);
+            this.tbLCMSN.TextChanged += new System.EventHandler(this.tbLCMItems_TextChanged);
+            this.tbLCMSN.DoubleClick += new System.EventHandler(this.tbLCMItems_DoubleClick);
             // 
-            // btnWrite
+            // mbtnWrite
             // 
-            this.btnWrite.Location = new System.Drawing.Point(727, 272);
-            this.btnWrite.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
-            this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(115, 29);
-            this.btnWrite.Style = MetroFramework.MetroColorStyle.Purple;
-            this.btnWrite.TabIndex = 12;
-            this.btnWrite.Text = "Write";
-            this.btnWrite.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.btnWrite.UseSelectable = true;
+            this.mbtnWrite.Location = new System.Drawing.Point(727, 272);
+            this.mbtnWrite.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
+            this.mbtnWrite.Name = "mbtnWrite";
+            this.mbtnWrite.Size = new System.Drawing.Size(115, 29);
+            this.mbtnWrite.Style = MetroFramework.MetroColorStyle.Purple;
+            this.mbtnWrite.TabIndex = 12;
+            this.mbtnWrite.Text = "Write";
+            this.mbtnWrite.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mbtnWrite.UseSelectable = true;
+            this.mbtnWrite.Click += new System.EventHandler(this.mbtnWrite_Click);
             // 
             // mtabHexView
             // 
@@ -515,12 +559,12 @@
             // hexBox1
             // 
             this.hexBox1.ColumnInfoVisible = true;
-            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBox1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.hexBox1.LineInfoVisible = true;
             this.hexBox1.Location = new System.Drawing.Point(3, 3);
             this.hexBox1.Name = "hexBox1";
             this.hexBox1.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.Transparent;
+            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
             this.hexBox1.Size = new System.Drawing.Size(835, 536);
             this.hexBox1.StringViewVisible = true;
             this.hexBox1.TabIndex = 23;
@@ -562,6 +606,7 @@
             this.mtabLCMTabs.ResumeLayout(false);
             this.mtabReadLCMInfo.ResumeLayout(false);
             this.mtabReadWriteLCM.ResumeLayout(false);
+            this.mtabReadWriteLCM.PerformLayout();
             this.mtabHexView.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -576,26 +621,28 @@
         private MetroFramework.Controls.MetroTabPage mtabReadLCMInfo;
         private MetroFramework.Controls.MetroTabPage mtabHexView;
         private MetroFramework.Controls.MetroTabPage mtabReadWriteLCM;
-        private MetroFramework.Controls.MetroLabel lblNumCBSN;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel lblLCMSN;
+        private MetroFramework.Controls.MetroLabel lblLCM;
         private MetroFramework.Controls.MetroTextBox tbLCMSN;
-        private MetroFramework.Controls.MetroButton btnWrite;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton mbtnWrite;
+        private MetroFramework.Controls.MetroTextBox mtbInfo;
+        private MetroFramework.Controls.MetroButton mbtnInfo;
         private Be.Windows.Forms.HexBox hexBox1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton mbtnClose;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroTextBox tbTrueTone;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel lblTrueToneSN;
+        private MetroFramework.Controls.MetroLabel lblTrueTone;
+        private MetroFramework.Controls.MetroTextBox tbTrueToneSN;
+        private MetroFramework.Controls.MetroLabel lblMtSN;
+        private MetroFramework.Controls.MetroLabel lblMt;
         private MetroFramework.Controls.MetroTextBox tbMtSN;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel lblGaussSN;
+        private MetroFramework.Controls.MetroLabel lblGauss;
         private MetroFramework.Controls.MetroTextBox tbGaussSN;
         private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
         private MetroFramework.Controls.MetroButton mbtnReadLcmFirmware;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroButton mbtnOpenLCMFirmware;
     }
 }
 
