@@ -485,6 +485,7 @@
             this.tbLCMSN.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbLCMSN.WaterMarkFont = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.tbLCMSN.TextChanged += new System.EventHandler(this.tbCoverBoardSN_TextChanged);
+            this.tbLCMSN.Click += new System.EventHandler(this.tbLCMSN_Click);
             // 
             // btnWrite
             // 
