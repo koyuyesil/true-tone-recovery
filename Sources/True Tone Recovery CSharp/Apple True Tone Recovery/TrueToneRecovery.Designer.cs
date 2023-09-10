@@ -36,10 +36,9 @@
             this.mtabReadLCMInfo = new MetroFramework.Controls.MetroTabPage();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.mtbHexView = new MetroFramework.Controls.MetroTabPage();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.hexBox1 = new Be.Windows.Forms.HexBox();
             this.mtabReadWriteLCM = new MetroFramework.Controls.MetroTabPage();
+            this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
+            this.mbtnReadLcmFirmware = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.tbTrueTone = new MetroFramework.Controls.MetroTextBox();
@@ -53,14 +52,15 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.tbLCMSN = new MetroFramework.Controls.MetroTextBox();
             this.btnWrite = new MetroFramework.Controls.MetroButton();
+            this.mtabHexView = new MetroFramework.Controls.MetroTabPage();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.hexBox1 = new Be.Windows.Forms.HexBox();
             this.mbtnClose = new MetroFramework.Controls.MetroButton();
-            this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
-            this.mbtnReadLcmFirmware = new MetroFramework.Controls.MetroButton();
             this.mtabLCMTabs.SuspendLayout();
             this.mtabReadLCMInfo.SuspendLayout();
-            this.mtbHexView.SuspendLayout();
-            this.metroPanel1.SuspendLayout();
             this.mtabReadWriteLCM.SuspendLayout();
+            this.mtabHexView.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbModelType
@@ -102,7 +102,7 @@
             // 
             this.mtabLCMTabs.Controls.Add(this.mtabReadLCMInfo);
             this.mtabLCMTabs.Controls.Add(this.mtabReadWriteLCM);
-            this.mtabLCMTabs.Controls.Add(this.mtbHexView);
+            this.mtabLCMTabs.Controls.Add(this.mtabHexView);
             this.mtabLCMTabs.Location = new System.Drawing.Point(13, 107);
             this.mtabLCMTabs.Name = "mtabLCMTabs";
             this.mtabLCMTabs.SelectedIndex = 0;
@@ -171,50 +171,6 @@
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.mbtnReadLcmInfo_Click);
             // 
-            // mtbHexView
-            // 
-            this.mtbHexView.Controls.Add(this.metroPanel1);
-            this.mtbHexView.HorizontalScrollbarBarColor = true;
-            this.mtbHexView.HorizontalScrollbarHighlightOnWheel = false;
-            this.mtbHexView.HorizontalScrollbarSize = 2;
-            this.mtbHexView.Location = new System.Drawing.Point(4, 38);
-            this.mtbHexView.Name = "mtbHexView";
-            this.mtbHexView.Size = new System.Drawing.Size(847, 605);
-            this.mtbHexView.TabIndex = 1;
-            this.mtbHexView.Text = "HE&X View";
-            this.mtbHexView.VerticalScrollbarBarColor = true;
-            this.mtbHexView.VerticalScrollbarHighlightOnWheel = false;
-            this.mtbHexView.VerticalScrollbarSize = 2;
-            // 
-            // metroPanel1
-            // 
-            this.metroPanel1.Controls.Add(this.hexBox1);
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 4;
-            this.metroPanel1.Location = new System.Drawing.Point(3, 60);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(841, 542);
-            this.metroPanel1.TabIndex = 26;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 3;
-            // 
-            // hexBox1
-            // 
-            this.hexBox1.ColumnInfoVisible = true;
-            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBox1.LineInfoVisible = true;
-            this.hexBox1.Location = new System.Drawing.Point(3, 3);
-            this.hexBox1.Name = "hexBox1";
-            this.hexBox1.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.Transparent;
-            this.hexBox1.Size = new System.Drawing.Size(835, 536);
-            this.hexBox1.StringViewVisible = true;
-            this.hexBox1.TabIndex = 23;
-            this.hexBox1.UseFixedBytesPerLine = true;
-            this.hexBox1.VScrollBarVisible = true;
-            // 
             // mtabReadWriteLCM
             // 
             this.mtabReadWriteLCM.Controls.Add(this.metroProgressBar1);
@@ -243,6 +199,27 @@
             this.mtabReadWriteLCM.VerticalScrollbarBarColor = true;
             this.mtabReadWriteLCM.VerticalScrollbarHighlightOnWheel = false;
             this.mtabReadWriteLCM.VerticalScrollbarSize = 2;
+            // 
+            // metroProgressBar1
+            // 
+            this.metroProgressBar1.Location = new System.Drawing.Point(10, 580);
+            this.metroProgressBar1.Maximum = 4000;
+            this.metroProgressBar1.Name = "metroProgressBar1";
+            this.metroProgressBar1.Size = new System.Drawing.Size(832, 29);
+            this.metroProgressBar1.TabIndex = 34;
+            // 
+            // mbtnReadLcmFirmware
+            // 
+            this.mbtnReadLcmFirmware.Location = new System.Drawing.Point(10, 272);
+            this.mbtnReadLcmFirmware.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
+            this.mbtnReadLcmFirmware.Name = "mbtnReadLcmFirmware";
+            this.mbtnReadLcmFirmware.Size = new System.Drawing.Size(115, 30);
+            this.mbtnReadLcmFirmware.Style = MetroFramework.MetroColorStyle.Purple;
+            this.mbtnReadLcmFirmware.TabIndex = 11;
+            this.mbtnReadLcmFirmware.Text = "Read LCM Firmware";
+            this.mbtnReadLcmFirmware.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mbtnReadLcmFirmware.UseSelectable = true;
+            this.mbtnReadLcmFirmware.Click += new System.EventHandler(this.mbtnReadLcmFirmware_Click);
             // 
             // metroLabel4
             // 
@@ -521,6 +498,50 @@
             this.btnWrite.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnWrite.UseSelectable = true;
             // 
+            // mtabHexView
+            // 
+            this.mtabHexView.Controls.Add(this.metroPanel1);
+            this.mtabHexView.HorizontalScrollbarBarColor = true;
+            this.mtabHexView.HorizontalScrollbarHighlightOnWheel = false;
+            this.mtabHexView.HorizontalScrollbarSize = 2;
+            this.mtabHexView.Location = new System.Drawing.Point(4, 38);
+            this.mtabHexView.Name = "mtabHexView";
+            this.mtabHexView.Size = new System.Drawing.Size(847, 605);
+            this.mtabHexView.TabIndex = 1;
+            this.mtabHexView.Text = "HE&X View";
+            this.mtabHexView.VerticalScrollbarBarColor = true;
+            this.mtabHexView.VerticalScrollbarHighlightOnWheel = false;
+            this.mtabHexView.VerticalScrollbarSize = 2;
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Controls.Add(this.hexBox1);
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 3;
+            this.metroPanel1.Location = new System.Drawing.Point(3, 60);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(841, 542);
+            this.metroPanel1.TabIndex = 26;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 2;
+            // 
+            // hexBox1
+            // 
+            this.hexBox1.ColumnInfoVisible = true;
+            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBox1.LineInfoVisible = true;
+            this.hexBox1.Location = new System.Drawing.Point(3, 3);
+            this.hexBox1.Name = "hexBox1";
+            this.hexBox1.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.Transparent;
+            this.hexBox1.Size = new System.Drawing.Size(835, 536);
+            this.hexBox1.StringViewVisible = true;
+            this.hexBox1.TabIndex = 23;
+            this.hexBox1.UseFixedBytesPerLine = true;
+            this.hexBox1.VScrollBarVisible = true;
+            // 
             // mbtnClose
             // 
             this.mbtnClose.Location = new System.Drawing.Point(282, 70);
@@ -533,27 +554,6 @@
             this.mbtnClose.Theme = MetroFramework.MetroThemeStyle.Light;
             this.mbtnClose.UseSelectable = true;
             this.mbtnClose.Click += new System.EventHandler(this.mbtnClose_Click);
-            // 
-            // metroProgressBar1
-            // 
-            this.metroProgressBar1.Location = new System.Drawing.Point(10, 580);
-            this.metroProgressBar1.Maximum = 4000;
-            this.metroProgressBar1.Name = "metroProgressBar1";
-            this.metroProgressBar1.Size = new System.Drawing.Size(832, 29);
-            this.metroProgressBar1.TabIndex = 34;
-            // 
-            // mbtnReadLcmFirmware
-            // 
-            this.mbtnReadLcmFirmware.Location = new System.Drawing.Point(10, 272);
-            this.mbtnReadLcmFirmware.Margin = new System.Windows.Forms.Padding(5, 25, 5, 5);
-            this.mbtnReadLcmFirmware.Name = "mbtnReadLcmFirmware";
-            this.mbtnReadLcmFirmware.Size = new System.Drawing.Size(115, 30);
-            this.mbtnReadLcmFirmware.Style = MetroFramework.MetroColorStyle.Purple;
-            this.mbtnReadLcmFirmware.TabIndex = 11;
-            this.mbtnReadLcmFirmware.Text = "Read LCM Firmware";
-            this.mbtnReadLcmFirmware.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mbtnReadLcmFirmware.UseSelectable = true;
-            this.mbtnReadLcmFirmware.Click += new System.EventHandler(this.mbtnReadLcmFirmware_Click);
             // 
             // TrueToneRecovery
             // 
@@ -576,9 +576,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrueToneRecovery_FormClosing);
             this.mtabLCMTabs.ResumeLayout(false);
             this.mtabReadLCMInfo.ResumeLayout(false);
-            this.mtbHexView.ResumeLayout(false);
-            this.metroPanel1.ResumeLayout(false);
             this.mtabReadWriteLCM.ResumeLayout(false);
+            this.mtabHexView.ResumeLayout(false);
+            this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -589,7 +589,7 @@
         private System.IO.Ports.SerialPort serialPortLCM;
         private MetroFramework.Controls.MetroTabControl mtabLCMTabs;
         private MetroFramework.Controls.MetroTabPage mtabReadLCMInfo;
-        private MetroFramework.Controls.MetroTabPage mtbHexView;
+        private MetroFramework.Controls.MetroTabPage mtabHexView;
         private MetroFramework.Controls.MetroTabPage mtabReadWriteLCM;
         private MetroFramework.Controls.MetroLabel lblNumCBSN;
         private MetroFramework.Controls.MetroLabel metroLabel1;
