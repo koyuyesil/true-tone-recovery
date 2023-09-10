@@ -31,7 +31,7 @@ namespace Apple_True_Tone_Recovery
     {
         Dictionary<string, List<string>> seriNumaralari = new Dictionary<string, List<string>>
         {
-            { "tbLCMSN", new List<string> { "0-56", "1851-2867", "3694-3710","4608-4629" } },
+            { "tbLCMSN", new List<string> { "0-56", "1851-2867", "3694-3710", "4608-4629" } },
             { "tbGaussSN", new List<string> { "15104-15129" } },
             { "tbMtSN", new List<string> { "14903-14946" } },
             { "tbTrueToneSN", new List<string> { "16320-16348" } }
@@ -315,7 +315,7 @@ namespace Apple_True_Tone_Recovery
                     serialPortLCM.Close();
                     tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
-                    tbMtSN.Text = ReadStringFromProvider(14903, 14946);
+                    tbMtSN.Text = ReadStringFromProvider(14903, 14947);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
                 }
 
@@ -349,12 +349,9 @@ namespace Apple_True_Tone_Recovery
         private void mbtnOpenLCMFirmware_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.InitialDirectory = "C:\\"; // Başlangıç dizinini belirleyin
             openFileDialog.Filter = "Binary Files (*.bin)|*.bin|Tüm Dosyalar (*.*)|*.*";
             openFileDialog.FilterIndex = 1;
-            //openFileDialog.Multiselect = false;
-            openFileDialog.AddExtension = true;
+            //openFileDialog.InitialDirectory=Application.StartupPath;
             openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
