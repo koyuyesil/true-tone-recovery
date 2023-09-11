@@ -369,10 +369,17 @@ namespace Apple_True_Tone_Recovery
                         kaynakDosya.Read(okunanBaytlar, 0, (int)kaynakDosya.Length);
                     }
                     hexBox1.ByteProvider.InsertBytes(0, okunanBaytlar);
+                    //8
                     tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
                     tbMtSN.Text = ReadStringFromProvider(14903, 14947);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                    //x
+                    tbLCMSN.Text = ReadStringFromProvider(9113, 9248);
+                    tbGaussSN.Text = ReadStringFromProvider(15756, 15782);
+                    tbMtSN.Text = ReadStringFromProvider(15664, 15704);
+                    tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+
                     //// Kaydedilecek dosyanın yolunu belirleyin
                     //SaveFileDialog saveFileDialog = new SaveFileDialog();
                     //saveFileDialog.Filter = "Metin Dosyaları (*.txt)|*.txt|Tüm Dosyalar (*.*)|*.*";
