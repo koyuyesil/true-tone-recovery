@@ -314,7 +314,7 @@ namespace Apple_True_Tone_Recovery
                         }
                     }
                 }
-
+                //need fix append
                 Console.WriteLine("Veri dosyaya kaydedildi.");
 
                 hexBox1.ByteProvider.InsertBytes(i, receivedData);
