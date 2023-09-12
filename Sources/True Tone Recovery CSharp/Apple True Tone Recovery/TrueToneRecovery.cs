@@ -291,9 +291,32 @@ namespace Apple_True_Tone_Recovery
         int i = 0;
         private void DataProcessing(byte[] receivedData)
         {
-
+            var fileName = Path.Combine(Application.StartupPath, "TEMP.BIN");
             try
             {
+                if (File.Exists(fileName))
+                {
+                    using (FileStream file = new FileStream(fileName, FileMode.Append))
+                    {
+                        using (BinaryWriter bw = new BinaryWriter(file))
+                        {
+                            bw.Write(receivedData); 
+                        }
+                    }
+                }
+                else
+                {
+                    using (FileStream file = new FileStream(fileName, FileMode.Create))
+                    {
+                        using (BinaryWriter bw = new BinaryWriter(file))
+                        {
+                            bw.Write(receivedData); 
+                        }
+                    }
+                }
+
+                Console.WriteLine("Veri dosyaya kaydedildi.");
+
                 hexBox1.ByteProvider.InsertBytes(i, receivedData);
                 hexBox1.Invalidate();// refresh invoke
                 i = i + receivedData.Length;
@@ -318,6 +341,7 @@ namespace Apple_True_Tone_Recovery
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
                     tbMtSN.Text = ReadStringFromProvider(14903, 14947);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                    
                 }
 
 
