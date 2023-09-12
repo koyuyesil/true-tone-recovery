@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using static MetroFramework.Drawing.MetroPaint.BackColor;
@@ -369,6 +370,21 @@ namespace Apple_True_Tone_Recovery
                         kaynakDosya.Read(okunanBaytlar, 0, (int)kaynakDosya.Length);
                     }
                     hexBox1.ByteProvider.InsertBytes(0, okunanBaytlar);
+                    using (MD5 md5 = MD5.Create())
+                    {
+                        // Metinden hash'i hesaplayın
+                        byte[] hashBytes = md5.ComputeHash(okunanBaytlar);
+
+                        // Hash'i hexadecimal bir dizeye dönüştürün
+                        StringBuilder hashBuilder = new StringBuilder();
+                        foreach (byte b in hashBytes)
+                        {
+                            hashBuilder.Append(b.ToString("x2"));
+                        }
+                        string md5Hash = hashBuilder.ToString();
+                        mtbChecksum.Text = "MD5 Hash: " + md5Hash;
+                    }
+
                     //8
                     tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);

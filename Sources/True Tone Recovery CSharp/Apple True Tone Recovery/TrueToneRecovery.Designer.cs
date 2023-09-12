@@ -58,6 +58,7 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.hexBox1 = new Be.Windows.Forms.HexBox();
             this.mbtnClose = new MetroFramework.Controls.MetroButton();
+            this.mtbChecksum = new MetroFramework.Controls.MetroTextBox();
             this.mtabLCMTabs.SuspendLayout();
             this.mtabReadLCMInfo.SuspendLayout();
             this.mtabReadWriteLCM.SuspendLayout();
@@ -107,7 +108,7 @@
             this.mtabLCMTabs.Controls.Add(this.mtabHexView);
             this.mtabLCMTabs.Location = new System.Drawing.Point(13, 107);
             this.mtabLCMTabs.Name = "mtabLCMTabs";
-            this.mtabLCMTabs.SelectedIndex = 1;
+            this.mtabLCMTabs.SelectedIndex = 2;
             this.mtabLCMTabs.Size = new System.Drawing.Size(855, 647);
             this.mtabLCMTabs.TabIndex = 5;
             this.mtabLCMTabs.UseSelectable = true;
@@ -529,6 +530,7 @@
             // 
             // mtabHexView
             // 
+            this.mtabHexView.Controls.Add(this.mtbChecksum);
             this.mtabHexView.Controls.Add(this.metroPanel1);
             this.mtabHexView.HorizontalScrollbarBarColor = true;
             this.mtabHexView.HorizontalScrollbarHighlightOnWheel = false;
@@ -548,7 +550,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 2;
-            this.metroPanel1.Location = new System.Drawing.Point(3, 60);
+            this.metroPanel1.Location = new System.Drawing.Point(0, 3);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(841, 542);
             this.metroPanel1.TabIndex = 26;
@@ -583,6 +585,36 @@
             this.mbtnClose.Theme = MetroFramework.MetroThemeStyle.Light;
             this.mbtnClose.UseSelectable = true;
             this.mbtnClose.Click += new System.EventHandler(this.mbtnClose_Click);
+            // 
+            // mtbChecksum
+            // 
+            // 
+            // 
+            // 
+            this.mtbChecksum.CustomButton.Image = null;
+            this.mtbChecksum.CustomButton.Location = new System.Drawing.Point(813, 1);
+            this.mtbChecksum.CustomButton.Name = "";
+            this.mtbChecksum.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mtbChecksum.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.mtbChecksum.CustomButton.TabIndex = 1;
+            this.mtbChecksum.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mtbChecksum.CustomButton.UseSelectable = true;
+            this.mtbChecksum.CustomButton.Visible = false;
+            this.mtbChecksum.Lines = new string[0];
+            this.mtbChecksum.Location = new System.Drawing.Point(0, 551);
+            this.mtbChecksum.MaxLength = 32767;
+            this.mtbChecksum.Name = "mtbChecksum";
+            this.mtbChecksum.PasswordChar = '\0';
+            this.mtbChecksum.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.mtbChecksum.SelectedText = "";
+            this.mtbChecksum.SelectionLength = 0;
+            this.mtbChecksum.SelectionStart = 0;
+            this.mtbChecksum.ShortcutsEnabled = true;
+            this.mtbChecksum.Size = new System.Drawing.Size(841, 23);
+            this.mtbChecksum.TabIndex = 27;
+            this.mtbChecksum.UseSelectable = true;
+            this.mtbChecksum.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.mtbChecksum.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // TrueToneRecovery
             // 
@@ -643,6 +675,7 @@
         private MetroFramework.Controls.MetroButton mbtnReadLcmFirmware;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroButton mbtnOpenLCMFirmware;
+        private MetroFramework.Controls.MetroTextBox mtbChecksum;
     }
 }
 
