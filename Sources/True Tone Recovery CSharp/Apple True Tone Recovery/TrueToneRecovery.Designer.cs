@@ -245,7 +245,7 @@
             this.mbtnReadLcmFirmware.Text = "Read LCM Firmware";
             this.mbtnReadLcmFirmware.Theme = MetroFramework.MetroThemeStyle.Light;
             this.mbtnReadLcmFirmware.UseSelectable = true;
-            this.mbtnReadLcmFirmware.Click += new System.EventHandler(this.mbtnReadLcmFirmware_Click);
+            this.mbtnReadLcmFirmware.Click += new System.EventHandler(this.mbtnReadLcmFirmware_ClickAsync);
             // 
             // lblTrueToneSN
             // 

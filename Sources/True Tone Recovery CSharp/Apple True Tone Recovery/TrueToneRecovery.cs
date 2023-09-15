@@ -11,6 +11,8 @@ using System.IO.Ports;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static MetroFramework.Drawing.MetroPaint.BackColor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -253,13 +255,22 @@ namespace Apple_True_Tone_Recovery
 
         }
 
-        private void mbtnReadLcmFirmware_Click(object sender, EventArgs e)
+        private void mbtnReadLcmFirmware_ClickAsync(object sender, EventArgs e)
         {
             try
             {
                 ResetForms();
-                serialPortLCM.PortName = Convert.ToString(cbPort.Text);
-                serialPortLCM.Open();
+                ChangeButtonState(false);
+
+                if (!serialPortLCM.IsOpen)
+                {
+                    serialPortLCM.PortName = Convert.ToString(cbPort.Text);
+                    serialPortLCM.Open();
+                    Thread.Sleep(2000);
+                    //buranın fixlenmesi lazım sürekli açık bağlantı daha iyi olur.connect disconnect mantığı  sadece ilk bağlantıda 3 saniye gecikmeli
+                    //ya counter koy yada butonlu yap
+
+                }
                 serialPortLCM.Write("DUMP!!");
 
             }
@@ -272,6 +283,11 @@ namespace Apple_True_Tone_Recovery
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void ChangeButtonState(bool isEnabled)
+        {
+            mbtnReadLcmFirmware.Enabled = isEnabled;
         }
 
 
@@ -300,7 +316,7 @@ namespace Apple_True_Tone_Recovery
                     {
                         using (BinaryWriter bw = new BinaryWriter(file))
                         {
-                            bw.Write(receivedData); 
+                            bw.Write(receivedData);
                         }
                     }
                 }
@@ -310,18 +326,14 @@ namespace Apple_True_Tone_Recovery
                     {
                         using (BinaryWriter bw = new BinaryWriter(file))
                         {
-                            bw.Write(receivedData); 
+                            bw.Write(receivedData);
                         }
                     }
                 }
-                //need fix append
-                Console.WriteLine("Veri dosyaya kaydedildi.");
-
                 hexBox1.ByteProvider.InsertBytes(i, receivedData);
                 hexBox1.Invalidate();// refresh invoke
-                i = i + receivedData.Length;
+                i += receivedData.Length;
                 metroProgressBar1.Value = i;
-
             }
             catch (Exception ex)
             {
@@ -333,17 +345,29 @@ namespace Apple_True_Tone_Recovery
             }
             finally
             {
-                if (hexBox1.ByteProvider.Length >= 16383)
-                {
-                    //need fix
-                    serialPortLCM.Close();
-                    tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
-                    tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
-                    tbMtSN.Text = ReadStringFromProvider(14903, 14947);
-                    tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
-                    
-                }
+            }
+            if (hexBox1.ByteProvider.Length >= 16383)
+            {
+                //7
+                metroProgressBar1.Value = 0;
+                serialPortLCM.Close();
+                tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
+                tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
+                tbMtSN.Text = ReadStringFromProvider(14903, 14947);
+                tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                //8
+                tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
+                tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
+                tbMtSN.Text = ReadStringFromProvider(14903, 14947);
+                tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                //x
+                tbLCMSN.Text = ReadStringFromProvider(9113, 9248);
+                tbGaussSN.Text = ReadStringFromProvider(15756, 15782);
+                tbMtSN.Text = ReadStringFromProvider(15664, 15704);
+                tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
 
+
+                ChangeButtonState(true);
 
             }
         }
@@ -352,18 +376,13 @@ namespace Apple_True_Tone_Recovery
             if (startOffset >= 0 && endOffset <= hexBox1.ByteProvider.Length)
             {
                 byte[] selectedData = new byte[endOffset - startOffset];
-
-                // Belirli bir adres aralığındaki verileri okuma
                 for (long address = startOffset, i = 0; address < endOffset; address++, i++)
                 {
                     selectedData[i] = hexBox1.ByteProvider.ReadByte(address);
                 }
-
-                // Okunan veriyi kullanabilirsiniz
                 string asciiData = System.Text.Encoding.ASCII.GetString(selectedData);
                 return asciiData;
 
-                // Dışa aktarma işlemlerini burada devam ettirebilirsiniz.
             }
             else
             {

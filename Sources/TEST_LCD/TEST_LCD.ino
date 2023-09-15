@@ -78,10 +78,10 @@ void loop() {
     String command = Serial.readStringUntil('!!');  // Seri iletilen komutu okuyun
     // Komutları işleyin
     if (command == "DUMP") {
-      delay(100);
+      //delay(100);
       Read(START_BYTE, END_BYTE);
     } else if (command == "WRITE") {
-      delay(100);
+      //delay(100);
       Read(START_BYTE, END_BYTE);
     } 
   }
