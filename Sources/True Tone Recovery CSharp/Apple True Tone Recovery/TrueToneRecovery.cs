@@ -355,17 +355,6 @@ namespace Apple_True_Tone_Recovery
                 tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
                 tbMtSN.Text = ReadStringFromProvider(14903, 14947);
                 tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
-                //8
-                tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
-                tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
-                tbMtSN.Text = ReadStringFromProvider(14903, 14947);
-                tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
-                //x
-                tbLCMSN.Text = ReadStringFromProvider(9113, 9248);
-                tbGaussSN.Text = ReadStringFromProvider(15756, 15782);
-                tbMtSN.Text = ReadStringFromProvider(15664, 15704);
-                tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
-
 
                 ChangeButtonState(true);
 
@@ -427,17 +416,38 @@ namespace Apple_True_Tone_Recovery
                         string md5Hash = hashBuilder.ToString();
                         mtbChecksum.Text = "MD5 Hash: " + md5Hash;
                     }
-
                     //8
                     tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
                     tbMtSN.Text = ReadStringFromProvider(14903, 14947);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
-                    //x
+                    //x  LCMSN1 LCMSN1 MTSN ilk 17 baytı aynıdır.
+                    lblLCM.Text += " 1 : " + ReadStringFromProvider(4620, 4800);
                     tbLCMSN.Text = ReadStringFromProvider(9113, 9248);
                     tbGaussSN.Text = ReadStringFromProvider(15756, 15782);
-                    tbMtSN.Text = ReadStringFromProvider(15664, 15704);
+                    tbMtSN.Text = ReadStringFromProvider(15660, 15704);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                    //8
+                    tbLCMSN.Text = ReadStringFromProvider(0, 57) + ReadStringFromProvider(4608, 4630);
+                    tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
+                    tbMtSN.Text = ReadStringFromProvider(14903, 14947);
+                    tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                    //x  LCMSN1 LCMSN1 MTSN ilk 17 baytı aynıdır.
+                    lblLCM.Text += " 1 : " + ReadStringFromProvider(4620, 4800);
+                    tbLCMSN.Text = ReadStringFromProvider(9113, 9248);
+                    tbGaussSN.Text = ReadStringFromProvider(15756, 15782);
+                    tbMtSN.Text = ReadStringFromProvider(15660, 15704);
+                    tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
+                    //11
+                    //4930 + 42 4971
+                    //4928 + 44 4971
+                    //4992 + 26 5017 gauss
+                    //5056 + 20 5075
+                    //5120 + 44 5163
+                    //5248 + 141 5388
+                    //5391 + 32 5422 PRJ
+                    //5440 + 44 5483 mtsn
+                    //5504 + 116 5619 lcd
 
                     //// Kaydedilecek dosyanın yolunu belirleyin
                     //SaveFileDialog saveFileDialog = new SaveFileDialog();
