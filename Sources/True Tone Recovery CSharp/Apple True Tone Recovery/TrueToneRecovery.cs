@@ -421,8 +421,7 @@ namespace Apple_True_Tone_Recovery
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
                     tbMtSN.Text = ReadStringFromProvider(14903, 14947);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
-                    //x  LCMSN1 LCMSN1 MTSN ilk 17 baytı aynıdır.
-                    lblLCM.Text += " 1 : " + ReadStringFromProvider(4620, 4800);
+                    //xr  LCMSN1 LCMSN1 MTSN ilk 17 baytı aynıdır.
                     tbLCMSN.Text = ReadStringFromProvider(9113, 9248);
                     tbGaussSN.Text = ReadStringFromProvider(15756, 15782);
                     tbMtSN.Text = ReadStringFromProvider(15660, 15704);
@@ -432,13 +431,17 @@ namespace Apple_True_Tone_Recovery
                     tbGaussSN.Text = ReadStringFromProvider(15104, 15130);
                     tbMtSN.Text = ReadStringFromProvider(14903, 14947);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
-                    //x  LCMSN1 LCMSN1 MTSN ilk 17 baytı aynıdır.
-                    lblLCM.Text += " 1 : " + ReadStringFromProvider(4620, 4800);
+                    //x  LCMSN1 LCMSN1 MTSN ilk 17+26 baytı aynıdır.
                     tbLCMSN.Text = ReadStringFromProvider(9113, 9248);
                     tbGaussSN.Text = ReadStringFromProvider(15756, 15782);
                     tbMtSN.Text = ReadStringFromProvider(15660, 15704);
                     tbTrueToneSN.Text = ReadStringFromProvider(16320, 16348);
                     //11
+                    //lblLCM.Text += " 1 : " + ReadStringFromProvider(5504, 5620);
+                    tbLCMSN.Text = ReadStringFromProvider(5504, 5620);
+                    tbGaussSN.Text = ReadStringFromProvider(4992, 5018);
+                    tbMtSN.Text = ReadStringFromProvider(5440, 5484);
+                    tbTrueToneSN.Text = ReadStringFromProvider(55040, 5620);
                     //4930 + 42 4971
                     //4928 + 44 4971
                     //4992 + 26 5017 gauss
