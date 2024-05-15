@@ -17,16 +17,6 @@ using System.Windows.Forms;
 using static MetroFramework.Drawing.MetroPaint.BackColor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-/**
- * Apple True Tone Recovery
- * 
- * Приложение формирует и отправляет в serial port пакет из байт серийного номера mtSN (Cover Board Number)
- * 
- * Copyright (C) 2020. v1.0 / Скляр Роман S-LAB
- * BUILD IN Microsoft Visual Studio Professional 2019 v16.6.2
- * .NET framework 4.8
- * 
-*/
 
 namespace Apple_True_Tone_Recovery
 {
@@ -239,7 +229,8 @@ namespace Apple_True_Tone_Recovery
                 hexBox1.Refresh(); // refresh normal
                 serialPortLCM.PortName = Convert.ToString(cbPort.Text);
                 serialPortLCM.Open();
-                serialPortLCM.Write($"{"var"}-{"var"}:READINFO!!");
+                //TODO BURADAYIZ
+                erialPortLCM.Write($"{"var"}-{"var"}:READINFO!!");
                 serialPortLCM.Write(String.Format("{0}-{1}:READINFO!!", "0", "56"));
 
             }
